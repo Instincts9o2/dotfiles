@@ -1,0 +1,19 @@
+unmailboxes *
+set imap_user = "pranavchaudhari97@gmail.com"
+set imap_pass = ""
+set smtp_url = "smtp://pranavchaudhari97@smtp.gmail.com:587/"
+set smtp_pass = ""
+set from = "pranavchaudhari97@gmail.com"
+set realname = "Pranav Chaudhari"
+set mbox_type = Maildir
+set sendmail = "/usr/bin/msmtp -a gmail"
+set folder = "~/.Mail/Gmail" 
+# set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set header_cache = ~/.mutt/gmail/cache/headers
+set message_cachedir = ~/.mutt/gmail/cache/bodies
+set certificate_file = ~/.mutt/gmail/certificates
+set ssl_starttls = yes
+set ssl_force_tls = yes
+set status_format = "$from -%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---"

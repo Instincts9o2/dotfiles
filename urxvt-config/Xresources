@@ -1,0 +1,54 @@
+URxvt.background:	[70]#000000
+URxvt.foreground:	#DEDEDE
+URxvt.font:		xft:monospace:size=10:antialias=true:hinting=true
+!URxvt.boldFont:         xft:monospace:size=11:antialias=true:hinting=true
+
+URxvt.scrollBar:	false
+URxvt.saveLines:	65535
+URxvt.perl-ext-common: keyboard-select,url-select,clipboard 
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.keysym.M-C-c:   perl:clipboard:copy
+URxvt.keysym.M-C-v:   perl:clipboard:paste
+
+!URxvt.iso14755: False
+!URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+Xft*dpi:   96
+!Xft*antialias: True
+!Xft*hinting:   full
+Xft.hintstyle: hintfull
+URxvt.keysym.KP_Add:    +
+URxvt.keysym.KP_Subtract: -
+URxvt.keysym.KP_Multiply: *
+URxvt.keysym.KP_Divide  : /
+URxvt.keysym.KP_Decimal : .
+URxvt.keysym.KP_Separator : ,
+URxvt.keysym.KP_1:      1
+URxvt.keysym.KP_2:      2
+URxvt.keysym.KP_3:      3
+URxvt.keysym.KP_4:      4
+URxvt.keysym.KP_5:      5
+URxvt.keysym.KP_6:      6
+URxvt.keysym.KP_7:      7
+URxvt.keysym.KP_8:      8
+URxvt.keysym.KP_9:      9
+URxvt.keysym.KP_0:      0
+
+!URxvt.transparent:   true
+!URxvt.shading:    20 
+!URxvt.depth:     32 
+URxvt.lineSpace: 1
+
+
+
+! hide mouse pointer
+URxvt.pointerBlank: true
+URxvt.cursorBlink: true
+
+
+URxvt.clipboard.copycmd: xsel -ib
+URxvt.clipboard.pastecmd: xsel -ob
+
+!URxvt.intensityStyles: false
+

@@ -1,0 +1,22 @@
+opacity-rule = ["62:name *= 'polybar'","80:name *= 'qutebrowser'"];
+
+# 90:name *= 'qutebrowser'"
+
+shadow = true;
+shadow-radius = 7;
+shadow-opacity = 0.7;
+no-dock-shadow = false;		# Avoid drawing shadows on dock/panel windows.
+no-dnd-shadow = true;		# Don't draw shadows on DND windows.
+clear-shadow = false;		# Zero the part of the shadow's mask behind the window (experimental).
+
+shadow-offset-x = -7;		# The left offset for shadows. (default -15)
+shadow-offset-y = -7;		# The top offset for shadows. (default -15)
+
+
+# Fading
+#fading = false; 	  	# Fade windows during opacity changes.
+#fade-delta = 3; 		# The time between steps in a fade in milliseconds. (default 10).
+#fade-in-step = 0.03; 		# Opacity change between steps while fading in. (default 0.028).
+#fade-out-step = 0.03; 		# Opacity change between steps while fading out. (default 0.03).
+
+

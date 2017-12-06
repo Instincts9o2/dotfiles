@@ -1,0 +1,29 @@
+[general]
+accounts = gmail 
+starttls = yes
+ssl = yes
+autorefresh = 1
+
+
+# Here's an example Gmail account, just add in a username and password to use your own.
+[Account gmail]
+
+localrepository = gmail-local
+remoterepository = gmail-remote
+
+[Repository gmail-remote]
+type = Gmail
+remoteuser = pranavchaudhari97@gmail.com
+remotepass = 
+
+#Note that the line below will not sync Gmail's redundant "All Mail" box. You can add other inboxes here you don't want to sync.
+folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail']
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+#Original auth_mechanisms = GSSAPI, CRAM-MD5, XOAUTH2, PLAIN, LOGIN
+auth_mechanisms = LOGIN
+
+[Repository gmail-local]
+type = Maildir
+localfolders = ~/.Mail/Gmail
+
