@@ -29,4 +29,4 @@ c.confirm_quit = ["always"]
 c.content.developer_extras = True
 c.colors.webpage.bg = "black"
 
-c.content.user_stylesheets = "~/solarized-everything-css/css/solarized-all-sites-dark.css"
+c.content.user_stylesheets = "/home/instincts/darculized-everything-css/css/darculized/darculized-all-sites.css"

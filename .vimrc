@@ -100,3 +100,6 @@ map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
+
+vmap <leader>y !xsel -i -b && xsel -b <CR>
+nmap <leader>p :r !xsel -b <CR>

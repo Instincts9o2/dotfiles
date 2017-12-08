@@ -163,11 +163,14 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 export BROWSER="qutebrowser"
 export BROWSERCLI="w3m"
-export PS1=">>>:\w\$ "
+#export PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h \w\[\033[0;32m\]$(__git_ps1)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\] ▶\[\033[0m\] '
+#">>>:\w\$ "
+#==========export PS1="\[\033[36m\]\[\033[m\]\[\033[32m\] \[\033[33;1m\]\w\[\033[m\] [\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\$  \n >>> "
+
+export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\[$(tput setaf 2)\]\[$(tput setaf 4)\]\[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\] [\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\n  >>>:\$ \[$(tput sgr0)\]"
 
 #export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 
-#[ -z "$RANGER_PS" ] || PS1="$RANGER_PS"
 
 #Allows you to cd into directory merely by typing the directory name.
 shopt -s autocd 
