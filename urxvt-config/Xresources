@@ -1,10 +1,12 @@
-URxvt.background:	[70]#000000
-URxvt.foreground:	#DEDEDE
-URxvt.font:		xft:monospace:size=10:antialias=true:hinting=true
+!*background:       #1b1918
+URxvt.background:   [70]#000000
+!urxvt*background: rgba:0000/0000/0200/c800
+URxvt.foreground:   #DEDEDE
+URxvt.font:     xft:monospace:size=10:antialias=true:hinting=true
 !URxvt.boldFont:         xft:monospace:size=11:antialias=true:hinting=true
 
-URxvt.scrollBar:	false
-URxvt.saveLines:	65535
+URxvt.scrollBar:   false
+URxvt.saveLines:   65535
 URxvt.perl-ext-common: keyboard-select,url-select,clipboard 
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
@@ -37,7 +39,7 @@ URxvt.keysym.KP_0:      0
 
 !URxvt.transparent:   true
 !URxvt.shading:    20 
-!URxvt.depth:     32 
+URxvt.depth:     32 
 URxvt.lineSpace: 1
 
 

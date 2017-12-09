@@ -130,15 +130,17 @@ fi
 
 set -o vi
 
-alias i3c='vim ~/.config/i3/config'
-alias qbc='vim ~/.config/qutebrowser/config.py'
-alias pbc='vim ~/.config/polybar/config'
-alias cc='vim ~/.config/compton/config'
-alias rc='vim ~/.config/ranger/rc.conf'
-alias xr='sudo vim ~/.Xresources'
-alias bashrc='vim ~/.bashrc'
-alias vimrc='vim ~/.vimrc'
+alias cfi='vim ~/.config/i3/config'
+alias cfq='vim ~/.config/qutebrowser/config.py'
+alias cfp='vim ~/.config/polybar/config'
+alias cfc='vim ~/.config/compton/config'
+alias cfr='vim ~/.config/ranger/rc.conf'
+alias cfx='sudo vim ~/.Xresources'
+alias cfb='vim ~/.bashrc'
+alias cfv='vim ~/.vimrc'
 alias ccr='compton --config ~/.config/compton/config -b'
+alias cfn='vim ~/.ncmpcpp/config'
+alias cft='vim ~/.tmux.conf'
 
 alias xdb='xrdb ~/.Xresources'
 alias nf='clear && neofetch'
@@ -163,13 +165,8 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 export BROWSER="qutebrowser"
 export BROWSERCLI="w3m"
-#export PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h \w\[\033[0;32m\]$(__git_ps1)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\] ▶\[\033[0m\] '
-#">>>:\w\$ "
-#==========export PS1="\[\033[36m\]\[\033[m\]\[\033[32m\] \[\033[33;1m\]\w\[\033[m\] [\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\$  \n >>> "
 
 export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\[$(tput setaf 2)\]\[$(tput setaf 4)\]\[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\] [\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\n  >>>:\$ \[$(tput sgr0)\]"
-
-#export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 
 
 #Allows you to cd into directory merely by typing the directory name.

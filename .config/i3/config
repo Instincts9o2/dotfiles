@@ -305,7 +305,7 @@ bindsym $mod+Shift+bracketright exec $bigfor
 
 
 #Blur script
-#exec --no-startup-id ~/.Scripts/blurme.sh &
+exec_always --no-startup-id ~/.Scripts/blurme.sh &
 
 
 #dylans conf
