@@ -204,8 +204,7 @@ exec --no-startup-id compton --config ~/.config/compton/config -b
 bindsym $mod+w move scratchpad
 
 # Show the first scratchpad window
-bindsym $mod+u scratchpad show, resize set 600 380; 
-#move position center 
+bindsym $mod+u scratchpad show, resize set 600 380; move position center 
 
 
 # i3 window flash

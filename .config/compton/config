@@ -1,4 +1,4 @@
-opacity-rule = ["62:name *= 'polybar'","80:name *= 'qutebrowser'"];
+opacity-rule = ["62:name *= 'polybar'","100:name *= 'qutebrowser'"];
 
 # 90:name *= 'qutebrowser'"
 

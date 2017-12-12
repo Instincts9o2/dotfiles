@@ -148,7 +148,8 @@ alias update='sudo apt update'
 alias upgrade='sudo apt upgrade'
 alias ht='htop'
 alias ra='ranger'
-alias bandho='sudo shutdown now'
+alias bandho='sudo poweroff'
+alias restart='sudo reboot'
 alias sol='cd ~/Solstice'
 alias sounds='~/Solstice/bash_scripts/alsa/alsa.sh'
 alias tc='sudo vim ~/.tmux.conf'
@@ -162,6 +163,7 @@ alias ls='ls -hN --color=auto --group-directories-first'
 alias bars="bash ~/.config/polybar/launch.sh"
 alias clock="ncmpcpp -s clock"
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias ll='ls -l'
 
 export BROWSER="qutebrowser"
 export BROWSERCLI="w3m"
