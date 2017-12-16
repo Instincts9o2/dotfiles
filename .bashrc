@@ -164,6 +164,9 @@ alias bars="bash ~/.config/polybar/launch.sh"
 alias clock="ncmpcpp -s clock"
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias ll='ls -l'
+alias sol='cd /home/instincts/Solstice/'
+alias sd='cd /home/instincts/Solstice/bash_scripts/doIt && ls'
+
 
 export BROWSER="qutebrowser"
 export BROWSERCLI="w3m"

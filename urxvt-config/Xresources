@@ -2,7 +2,7 @@
 URxvt.background:   [70]#000000
 !urxvt*background: rgba:0000/0000/0200/c800
 URxvt.foreground:   #DEDEDE
-URxvt.font:     xft:DejaVu Sans Mono for Powerline:size=10:antialias=true:hinting=true
+URxvt.font:     xft:Source Code Pro for Powerline:size=10:antialias=true:hinting=true
 !URxvt.boldFont:     xft:DejaVu Sans Mono Bold for Powerline:size=10:antialias=true:hinting=true
 
 URxvt.scrollBar:   false
@@ -40,7 +40,7 @@ URxvt.keysym.KP_0:      0
 !URxvt.transparent:   true
 !URxvt.shading:    20 
 !URxvt.depth:     32 
-URxvt.lineSpace: 1
+URxvt.lineSpace: .8
 
 
 
@@ -54,3 +54,5 @@ URxvt.clipboard.pastecmd: xsel -ob
 
 !URxvt.intensityStyles: false
 
+URxvt*.termName: rxvt-unicode-256color
+!URxvt.letterSpace: 0.5

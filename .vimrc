@@ -6,9 +6,28 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
+Plug 'rafi/awesome-vim-colorschemes'
+""" Colorscheme Approximation """
+" This transforms colorschemes to terminal colorschemes
+" " The ctermbg=NONE hooks make backgrounds transparent in terminals
+"Plug 'godlygeek/csapprox'
 
 
 call plug#end()
+
+"Keeps background transparent for all colorschemes
+function! AdaptColorscheme()
+    highlight clear CursorLine
+    highlight Normal ctermbg=none
+    highlight LineNr ctermbg=none
+    highlight Folded ctermbg=none
+    highlight NonText ctermbg=none
+    highlight SpecialKey ctermbg=none
+    highlight VertSplit ctermbg=none
+    highlight SignColumn ctermbg=none
+endfunction
+autocmd ColorScheme * call AdaptColorscheme()
+
 
 "Folding 
 set foldmethod=indent   
@@ -16,7 +35,7 @@ set foldnestmax=10
 "set nofoldenable //Files open in normal mode
 set foldlevel=2
 
-colorscheme wal
+colorscheme tender
 
 set relativenumber
 set number
@@ -51,6 +70,9 @@ set expandtab
 
 syntax enable
 
+"hi Normal ctermbg=none
+"highlight NonText ctermbg=none
+
 filetype on 
 set nocompatible
 filetype plugin on 
@@ -72,12 +94,6 @@ set incsearch
 command! MakeTags !ctags -R .
 
 set path+=**
-
-
-
-" Display extra whitespace
-"set list listchars=tab:»·,trail:·,nbsp:·
-
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
@@ -113,28 +129,12 @@ map <leader>l :wincmd l<CR>
 vmap <leader>y !xsel -i -b && xsel -b <CR>
 nmap <leader>p :r !xsel -b <CR>
 
-"Vim Powerline 
+"         Vim airline 
 
 "Automatically display buffers 
 "let g:airline#extensions#tabline#enabled = 1
-"
-"function! AccentDemo()
-"    let keys = ['a','b','c','d','e','f','g','h']
-"    for k in keys
-"        call airline#parts#define_text(k, k)
-"    endfor
-"    call airline#parts#define_accent('a', 'red')
-"    call airline#parts#define_accent('b', 'green')
-"    call airline#parts#define_accent('c', 'blue')
-"    call airline#parts#define_accent('d', 'yellow')
-"    call airline#parts#define_accent('e', 'orange')
-"    call airline#parts#define_accent('f', 'purple')
-"    call airline#parts#define_accent('g', 'bold')
-"    call airline#parts#define_accent('h', 'italic')
-"    let g:airline_section_a = airline#section#create(keys)
-"endfunction
-"autocmd VimEnter * call AccentDemo()
-
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
 
 "enable modified detection >
 let g:airline_detect_modified=1
@@ -142,8 +142,8 @@ let g:airline_detect_modified=1
 "enable paste detection >
 let g:airline_detect_paste=1
 
+"For powerline fonts
 let g:airline_powerline_fonts = 1
-
 
 if !exists('g:airline_symbols')
         let g:airline_symbols = {}
@@ -174,3 +174,4 @@ if !exists('g:airline_symbols')
 
 set t_Co=256
 let g:airline#extensions#branch#enabled = 1
+
