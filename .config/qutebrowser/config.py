@@ -30,3 +30,23 @@ c.content.developer_extras = True
 c.colors.webpage.bg = "black"
 
 c.content.user_stylesheets = "/home/instincts/darculized-everything-css/css/darculized/darculized-all-sites.css"
+
+
+
+# Fonts
+#c.fonts.monospace = "Italic Source Code Pro for Powerline"
+#c.fonts.completion.entry = "10pt Source Code Pro for Powerline"
+#c.fonts.completion.category = "bold 10pt Source Code Pro for Powerline"
+#c.fonts.debug_console = "10pt Source Code Pro for Powerline"
+#c.fonts.downloads = "10pt Source Code Pro for Powerline"
+#c.fonts.hints = "bold 13px Source Code Pro for Powerline"
+#c.fonts.keyhint = "10pt Source Code Pro for Powerline"
+#c.fonts.messages.error = "10pt Source Code Pro for Powerline"
+#c.fonts.messages.info = "10pt Source Code Pro for Powerline"
+#c.fonts.messages.warning = "10pt Source Code Pro for Powerline"
+#c.fonts.prompts = "10pt Source Code Pro for Powerline"
+#c.fonts.statusbar = "10pt Source Code Pro for Powerline"
+#c.fonts.tabs = "10pt Source Code Pro for Powerline"
+#c.fonts.web.family.fixed = "Source Code Pro for Powerline"
+#c.fonts.web.family.sans_serif = "Source Code Pro for Powerline"
+#c.fonts.web.family.serif = "Source Code Pro for Powerline"

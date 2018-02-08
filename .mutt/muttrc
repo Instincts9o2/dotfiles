@@ -1,3 +1,4 @@
+#source /home/instincts/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc
 # Folder hooks
  folder-hook 'gmailrc' 'source ~/.mutt/gmailrc'
 # folder-hook 'account.com.yahoo.gotbletu' 'source ~/.mutt/account.com.yahoo.gotbletu'
@@ -61,14 +62,20 @@ bind index R group-reply
 
 # Colours
 
-mono bold bold
-mono underline underline
-mono indicator reverse
-color index yellow default '.*'
+#mono bold bold
+#mono underline underline
+#mono indicator reverse
+#color index yellow default '.*'
 #color index_author red default '.*'
 #color index_number blue default
 #color index_subject cyan default '.s'
 #color index_size green default
-color normal default default
-color body brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
-color body brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+#color normal default default
+#color body brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+#color body brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+
+# Opening URLs from mutt 
+macro pager \cb 'urlview' 'Follow links with urlview'
+
+
+

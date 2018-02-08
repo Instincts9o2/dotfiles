@@ -5,3 +5,4 @@ keycode 105 = Alt_R
 keycode 108 = Control_R
 add Control = Control_R
 add Mod1 = Alt_R
+

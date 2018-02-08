@@ -1,21 +1,25 @@
-!*background:       #1b1918
-URxvt.background:   [70]#000000
-!urxvt*background: rgba:0000/0000/0200/c800
-URxvt.foreground:   #DEDEDE
-URxvt.font:     xft:Source Code Pro for Powerline:size=10:antialias=true:hinting=true
-!URxvt.boldFont:     xft:DejaVu Sans Mono Bold for Powerline:size=10:antialias=true:hinting=true
+URxvt.intensityStyles:	true
+
+URxvt.font:     xft:Source Code Pro for Powerline:style=Regular:size=10:antialias=true:hinting=true
 
 URxvt.scrollBar:   false
 URxvt.saveLines:   65535
-URxvt.perl-ext-common: keyboard-select,url-select,clipboard 
+URxvt.perl-lib:  /home/instincts/urxvt-config/plugins/
+URxvt.perl-ext-common: keyboard-select,url-select,clipboard,font-size
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s: perl:keyboard-select:search
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.keysym.M-C-c:   perl:clipboard:copy
-URxvt.keysym.M-C-v:   perl:clipboard:paste
+!URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.C-S-u: perl:url-select:select_next
+URxvt.url-launcher:	/usr/bin/xdg-open
+URxvt.keysym.C-M-c:   perl:clipboard:copy
+URxvt.keysym.C-M-v:   perl:clipboard:paste
+URxvt.clipboard.autocopy:   true
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-equal:  font-size:reset
 
-!URxvt.iso14755: False
-!URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+URxvt.iso14755: False
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 Xft*dpi:   96
 !Xft*antialias: True
 !Xft*hinting:   full
@@ -38,9 +42,9 @@ URxvt.keysym.KP_9:      9
 URxvt.keysym.KP_0:      0
 
 !URxvt.transparent:   true
-!URxvt.shading:    20 
-!URxvt.depth:     32 
-URxvt.lineSpace: .8
+!URxvt.shading:    10 
+URxvt.depth:     32 
+!URxvt.lineSpace: .0
 
 
 
@@ -49,10 +53,36 @@ URxvt.pointerBlank: true
 URxvt.cursorBlink: true
 
 
-URxvt.clipboard.copycmd: xsel -ib
-URxvt.clipboard.pastecmd: xsel -ob
+!URxvt.clipboard.copycmd: xsel -ib
+!URxvt.clipboard.pastecmd: xsel -ob
 
 !URxvt.intensityStyles: false
 
 URxvt*.termName: rxvt-unicode-256color
-!URxvt.letterSpace: 0.5
+!URxvt.letterSpace: true 
+letterspace : 0
+URxvt.internalBorder: 3
+!URxvt.externalBorder: 0
+
+
+! airblader colorscheme
+! === gruvbox color scheme ===
+*.foreground:   #c0c0c0
+*.background:   #1d2325
+*.cursorColor:  #ffffff
+*.color0:       #252525
+*.color8:       #434343
+*.color1:       #7c4d72
+*.color9:       #c758af
+*.color2:       #727c4d
+*.color10:      #afc758
+*.color3:       #7c724d
+*.color11:      #c7af58
+*.color4:       #4d727c
+*.color12:      #58afc7
+*.color5:       #7d4d5b
+*.color13:      #c75877
+*.color6:       #4d5b7d
+*.color14:      #5877c7
+*.color7:       #c0c0c0
+*.color15:      #f3f3f3

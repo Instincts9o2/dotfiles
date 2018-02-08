@@ -9,23 +9,41 @@ global:
       J: back
       K: forward
       L: tab-next
+  colors.downloads.bar.bg: '#262626'
+  colors.downloads.error.bg: grey
+  colors.downloads.start.bg: '#262626'
+  colors.statusbar.caret.selection.bg: black
+  colors.statusbar.command.bg: '#262626'
+  colors.statusbar.command.private.bg: black
+  colors.statusbar.normal.bg: '#262626'
+  colors.statusbar.private.bg: black
+  colors.tabs.bar.bg: '#262626'
   colors.tabs.even.bg: grey
+  colors.tabs.odd.bg: grey
+  colors.tabs.selected.even.bg: '#262626'
+  colors.tabs.selected.odd.bg: '#262626'
   colors.webpage.bg: black
   completion.cmd_history_max_items: 100
   completion.height: 40%
   completion.shrink: false
   completion.web_history_max_items: -1
-  content.user_stylesheets: /home/instincts/Solstice/HTML&css/darculized-all-sites.css
+  content.user_stylesheets: /home/instincts/solarized-everything-css/css/solarized-all-sites-dark.css
   downloads.location.directory: ~/Downloads
+  fonts.keyhint: 10pt monospace
+  fonts.monospace: '"xos4 Terminus", Terminus, Monospace, "DejaVu Sans Mono", Monaco,
+    "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier, "Liberation
+    Mono", monospace, Fixed, Consolas, Terminal'
   fonts.web.size.minimum_logical: 6
   keyhint.delay: 1
-  messages.timeout: 2000
+  messages.timeout: 5000
+  statusbar.hide: true
   tabs.position: top
-  tabs.show: always
-  tabs.show_switching_delay: 1
+  tabs.show: switching
+  tabs.show_switching_delay: 8000
   url.default_page: https://start.google.com/
   url.searchengines:
     DEFAULT: https://duckduckgo.com/?q={}
+  zoom.default: 100%
   zoom.levels:
   - 25%
   - 33%

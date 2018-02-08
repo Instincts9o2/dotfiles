@@ -9,7 +9,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Control
+set $mod1 Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -29,7 +30,7 @@ font pango:DejaVu Sans Mono 8
 #Remaps the caps lock button to escape and uses the US international keyboard with dead keys
 exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl -option caps:escape
 
-#exec_always --no-startup-id xmodmap ~/.Xmodmap
+exec_always xmodmap ~/.Xmodmap
 
 # URXVT
 set $term urxvt 
@@ -44,7 +45,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+g exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -81,14 +82,15 @@ bindsym $mod+Shift+Right move right
 
 # split in vertical orientation
 #bindsym $mod+v split v
+#bindsym $mod+v workspace next
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
+#bindsym $mod+i layout stacking
+#bindsym $mod+t layout tabbed
+#bindsym $mod+b layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -97,10 +99,24 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
+#bindsym $mod+Shift+a focus child
 
 # focus the child container
 #bindsym $mod+d focus child
+
+
+#Workspace settings 
+set $ws1 "Research"
+set $ws2 "</>"
+set $ws3 "Random"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "Mutt"
+set $ws10 "Ncmpcpp"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -164,32 +180,31 @@ mode "resize" {
 # finds out, if available)
 
 
-bar {
-     i3bar_command $HOME/.config/polybar/launch.sh 
-}
+#bar {
+#     i3bar_command $HOME/.config/polybar/launch.sh 
+#}
 	
  
 exec qutebrowser 
 exec --no-startup-id nm-applet
 
 
-bindsym $mod+c exec qutebrowser 
-bindsym $mod+t exec gnome-alsamixer
+bindsym $mod+Shift+g exec qutebrowser 
 bindsym $mod+Shift+p exec psensor
 
 
 
 #For no window bar
-for_window [class="^.*"] border pixel 0 
+for_window [class="^.*"] border pixel 3
 hide_edge_borders both
 
 #inner and outer gaps
 
-gaps inner 40
+gaps inner 0
 gaps outer 0
 
-bindsym $mod+Shift+d	gaps inner current set 0; gaps outer current set 0
-bindsym $mod+Shift+t	gaps inner current set 40; gaps outer current set 0 
+bindsym $mod+Shift+d 	gaps inner current set 0; gaps outer current set 0
+#bindsym $mod+Shift+i	gaps inner current set 8; gaps outer current set 0 
 
 
 #Unclutter makes the mouse invisible after a brief period
@@ -197,56 +212,58 @@ exec --no-startup-id unclutter
 
 # Wal and compton
 exec --no-startup-id compton --config ~/.config/compton/config -b 
-#exec --no-startup-id wal -i ~/Downloads/Landscapes
+exec feh --bg-fill /home/instincts/Downloads/Landscapes/landscape_7.jpg
+exec_always xrdb ~/.Xresources
 
 
 # Make the currently focused window a scratchpad
 bindsym $mod+w move scratchpad
 
 # Show the first scratchpad window
-bindsym $mod+u scratchpad show, resize set 600 380; move position center 
+bindsym $mod+semicolon scratchpad show; border pixel 1
+
+
+set $bg-color            #1d1f21
+set $bd-color            #ffffff
+set $inactive-bg-color   #383C4A
+set $inactive-bd-color   #383C4A
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+#                           border          background      text                 indicator  child border 
+client.focused              $bd-color       $bg-color       $text-color          $bd-color  $bd-color  
+client.unfocused            $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
+client.focused_inactive     $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
+client.urgent               $bg-color       $bg-color       $text-color          $bg-color  $bg-color
+client.background                           $bg-color
 
 
 # i3 window flash
 #bindsym $mod+semicolon exec i3-msg border pixel 3
 #bindsym --release $mod+semicolon exec i3-msg border pixel 0
 set $flash --no-startup-id bash ~/.Scripts/flash.sh
-bindsym $mod+semicolon exec $flash
+#bindsym $mod+semicolon exec $flash
 
 # Dynamic resize
 
-bindsym $mod+Shift+y	resize shrink width 3 px or 3 ppt
-bindsym $mod+Shift+u	resize shrink height 3 px or 3 ppt
-bindsym $mod+Shift+i	resize grow height 3 px or 3 ppt
-bindsym $mod+Shift+o	resize grow width 3 px or 3 ppt
+bindsym $mod+Shift+y	resize shrink width 20 px or 20 ppt
+bindsym $mod+Shift+u	resize shrink height 20 px or 20 ppt
+bindsym $mod+Shift+i	resize grow height 20 px or 20 ppt
+bindsym $mod+Shift+o	resize grow width 20 px or 20 ppt
 
 
-bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+a workspace back_and_forth
 
 bindsym $mod+apostrophe split horizontal ;; exec $term
 bindsym $mod+slash split vertical ;; exec $term
 
-bindsym $mod+Shift+m exec transset -a --dec .20
-bindsym $mod+Shift+n exec transset -a --inc .20
+bindsym $mod+Shift+m exec transset -a --dec .05
+bindsym $mod+Shift+n exec transset -a --inc .05
 
-# bindsym $mod+i exec $term -e htop
-bindsym $mod+r exec $term -e ranger
 
 #Mount other drives:
 exec --no-startup-id sudo mount -a
 
 
-#Workspace settings 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
 
 for_window [class="qutebrowser"] move to workspace $ws1
 
@@ -279,7 +296,6 @@ set $mute --no-startup-id amixer sset Master toggle
 set $truemute --no-startup-id amixer sset Master mute
 set $headphonemute --no-startup-id amixer -c 1 sset Headphone mute
 
-bindsym $mod+Shift+Return exec $term -e tmux
 
 
 bindsym XF86AudioLowerVolume  exec $dec
@@ -291,7 +307,7 @@ bindsym $mod+Down  exec $dec
 
 
 bindsym $mod+m exec $music
-bindsym $mod+p exec $pause
+bindsym $mod+p exec $pause && mpc volume 50
 bindsym $mod+less exec $prev
 bindsym $mod+Shift+less exec $beg
 bindsym $mod+greater exec $next
@@ -304,17 +320,19 @@ bindsym $mod+Shift+bracketright exec $bigfor
 
 
 #Blur script
-exec_always --no-startup-id ~/.Scripts/blurme.sh &
+#exec_always --no-startup-id ~/.Scripts/blurme.sh &
 
-
-#dylans conf
-bindsym $mod+i sticky toggle
 
 bindsym $mod+x          exec --no-startup-id ~/.config/i3/lock.sh
 
-bindsym $mod+s          gaps inner current plus 5
-bindsym $mod+Shift+s        gaps inner current minus 5
+#bindsym $mod+s          gaps inner current plus 2
+bindsym $mod+Shift+s        gaps inner current minus 2
 
-bindsym $mod+z          gaps outer current plus 5
-bindsym $mod+Shift+z        gaps outer current minus 5
+bindsym $mod+z          gaps outer current plus 2
+bindsym $mod+Shift+z        gaps outer current minus 2
 
+bindsym $mod+F2 exec /home/instincts/Solstice/bash_scripts/doIt/termbgrandom.sh
+
+
+# Nautilus 
+bindsym $mod+Home exec nautilus --no-desktop

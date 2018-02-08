@@ -7,9 +7,9 @@
 ;=====================================================
 
 [colors]
-background = ${xrdb:color0}
+;background = ${xrdb:color0}
 ;background = ${xrdb:color2:#222}
-;background = #252A39
+background = #00000000
 background-alt = #00000000
 foreground = ${xrdb:color7}
 ;foreground = ${xrdb:color7:#222}
@@ -28,29 +28,31 @@ height = 26
 ;radius = 0.0
 fixed-center = false 
 
+bottom = false
+
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 4
+line-size = 2
 line-color = {$xrdb:color1}
 ;line-color = #f00
 
 border-size = 0
 border-color = #00000000
 
-padding-left = 0
-padding-right = 0
+padding-left = 2
+padding-right = 3
 
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = FontAwesome:pixelsize=10;1
-font-1 = FontAwesome:fontformat=truetype:size=24:antialias=false;1
-font-2 = FontAwesome:pixelsize=10;1
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
 
-modules-left = i3 mpd
-;modules-center = 
-modules-right = speedometer volume filesystem xbacklight xkeyboard memory cpu battery temperature date powermenu
+modules-left = date mpd
+modules-center = i3
+modules-right = filesystem xbacklight memory cpu 
 
 tray-position = right
 tray-padding = 2
@@ -101,7 +103,7 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %index%
+label-focused = %name% 
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
@@ -131,23 +133,23 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %name%
 label-focused-background = ${module/bspwm.label-focused-background}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %name%
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
@@ -367,6 +369,7 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
+
 
 [global/wm]
 margin-top = 5
