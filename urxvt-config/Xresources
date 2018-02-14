@@ -69,7 +69,7 @@ URxvt.internalBorder: 3
 ! === gruvbox color scheme ===
 *.foreground:   #c0c0c0
 *.background:   #1d2325
-*.cursorColor:  #ffffff
+!*.cursorColor:  #ffffff
 *.color0:       #252525
 *.color8:       #434343
 *.color1:       #7c4d72

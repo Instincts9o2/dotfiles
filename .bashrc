@@ -74,7 +74,7 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" && eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -138,7 +138,7 @@ alias cfv='vim ~/.vimrc'
 alias ccr='compton --config ~/.config/compton/config -b'
 alias cfn='vim ~/.ncmpcpp/config'
 alias cft='vim ~/.tmux.conf'
-alias tmux='tmux -u'
+alias tmux='tmux -2u'
 alias xdb='xrdb ~/.Xresources'
 alias nf='clear && neofetch'
 alias update='sudo apt update'
@@ -173,13 +173,14 @@ export BROWSER="qutebrowser"
 export BROWSERCLI="w3m"
 export CHEATCOLORS=true
 
-export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\[$(tput setaf 2)\]\[$(tput setaf 4)\]\[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\] [\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\n  \e[38;5;82m>>>:\$ \[$(tput sgr0)\]"
+PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\[$(tput setaf 2)\]\[$(tput setaf 4)\]\[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\] [\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\n  \e[38;5;82m>>>:\$ \[$(tput sgr0)\]"
+export PS1
 
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob 
 # mutt background fix
-COLORFGBG="default;default"
+export COLORFGBG="default;default"
 
 
 # Color Manpages
@@ -204,7 +205,7 @@ if [ $# -lt 2 ]; then
     return 1
 fi
 
-outputdir_name=$(echo "$2" | rev | cut -d\/ -f2 | rev)
+outputdir_name=$(echo "$2" | rev | cut -d/ -f2 | rev)
 mkdir -pv "$outputdir_name"
 cd "$outputdir_name" && wget -r -l1 -H -t1 -nd -N -np -A "$1" -erobots=off "$2"
                                   }
@@ -222,3 +223,8 @@ _fasd_bash_hook_cmd_complete v m j o
 
 #fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# FZF colorscheme
+export FZF_DEFAULT_OPTS='
+--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229
+--color info:150,prompt:110,spinner:150,pointer:167,marker:174'

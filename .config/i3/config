@@ -30,10 +30,9 @@ font pango:DejaVu Sans Mono 8
 #Remaps the caps lock button to escape and uses the US international keyboard with dead keys
 exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl -option caps:escape
 
-exec_always xmodmap ~/.Xmodmap
 
 # URXVT
-set $term urxvt 
+set $term st
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -195,15 +194,15 @@ bindsym $mod+Shift+p exec psensor
 
 
 #For no window bar
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 1
 hide_edge_borders both
 
 #inner and outer gaps
 
-gaps inner 0
-gaps outer 0
+gaps inner 8
+gaps outer 14
 
-bindsym $mod+Shift+d 	gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+d 	gaps inner current set 8; gaps outer current set 14
 #bindsym $mod+Shift+i	gaps inner current set 8; gaps outer current set 0 
 
 
@@ -214,7 +213,7 @@ exec --no-startup-id unclutter
 exec --no-startup-id compton --config ~/.config/compton/config -b 
 exec feh --bg-fill /home/instincts/Downloads/Landscapes/landscape_7.jpg
 exec_always xrdb ~/.Xresources
-
+exec_always xmodmap ~/.Xmodmap
 
 # Make the currently focused window a scratchpad
 bindsym $mod+w move scratchpad
@@ -275,7 +274,7 @@ exec --no-startup-id mpd
 
 ###---Audio and Music Definitions---###
 ###For mpc:
-set $music urxvt -e ncmpcpp
+#set $music urxvt -e ncmpcpp
 set $pause --no-startup-id mpc toggle
 set $trupause --no-startup-id mpc pause
 set $next --no-startup-id mpc next
@@ -306,7 +305,7 @@ bindsym $mod+Up  exec $inc
 bindsym $mod+Down  exec $dec
 
 
-bindsym $mod+m exec $music
+#bindsym $mod+m exec $music
 bindsym $mod+p exec $pause && mpc volume 50
 bindsym $mod+less exec $prev
 bindsym $mod+Shift+less exec $beg
@@ -336,3 +335,4 @@ bindsym $mod+F2 exec /home/instincts/Solstice/bash_scripts/doIt/termbgrandom.sh
 
 # Nautilus 
 bindsym $mod+Home exec nautilus --no-desktop
+

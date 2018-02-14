@@ -1,7 +1,6 @@
 "VimPlug (Plugin Manager)
 call plug#begin('~/.vim/plugged')
 
-"Plug 'dylanaraps/wal.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -10,29 +9,29 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'vim-syntastic/syntastic'
 Plug 'tomtom/tcomment_vim'
 Plug 'NLKNguyen/papercolor-theme'
+" If installed using git
+Plug '~/.fzf'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
 
-"Keeps background transparent for all colorschemes
-"function! AdaptColorscheme()
-"    highlight clear CursorLine
-""    highlight Normal ctermbg=none
-"    highlight LineNr ctermbg=none
-"    highlight Folded ctermbg=none
-"    highlight NonText ctermbg=none
-"    highlight SpecialKey ctermbg=none
-"    highlight VertSplit ctermbg=none
-"    highlight SignColumn ctermbg=none
-"endfunction
-"autocmd ColorScheme * call AdaptColorscheme()
-
+" let g:PaperColor_Theme_Options = {
+"   \   'theme': {
+"   \     'default': { 
+"   \       'override' : {
+"   \         'color00' : ['#002b36', ''],
+"   \         'linenumber_bg' : ['', '234']
+"   \       }
+"   \     }
+"   \   }
+"   \ }
 
 "Folding 
 set foldmethod=manual
 "set foldnestmax=10
 "set nofoldenable "//Files open in normal mode
-set foldlevel=0
+set foldlevel=1
 
 set background=dark
 colorscheme PaperColor
@@ -52,7 +51,7 @@ set hidden
 set wildmenu
 "set wildmode=list:longest
 "set visualbell
-"set cursorline
+"set nocursorline
 set linebreak
 set wrap
 set ttyfast
@@ -135,9 +134,9 @@ nmap <leader>p :r !xsel -b <CR>
 "         Vim airline 
 
 "Automatically display buffers 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ''
+" let g:airline#extensions#tabline#left_alt_sep = ''
 
 "enable modified detection >
 let g:airline_detect_modified=1
@@ -229,4 +228,80 @@ hi Folded ctermbg=black
 "autocmd BufEnter *.sh colorscheme challenger_deep
 
 " Buffer switching
-nnoremap <Leader>v :ls<CR>:b<Space>
+"nnoremap <Leader>v :ls<CR>:b<Space>
+
+" FZF INTEGRATION
+" fzf buffer Switching 
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+nnoremap <silent> <Leader>v :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })<CR>
+
+
+
+" FZF Locating all files on file system
+command! -nargs=1 -bang Locate call fzf#run(fzf#wrap(
+      \ {'source': 'locate <q-args>', 'options': '-m'}, <bang>0))
+
+
+
+" FZF Search lines in all open buffers
+function! s:line_handler(l)
+  let keys = split(a:l, ':\t')
+  exec 'buf' keys[0]
+  exec keys[1]
+  normal! ^zz
+endfunction
+
+function! s:buffer_lines()
+  let res = []
+  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
+  endfor
+  return res
+endfunction
+
+command! FZFLines call fzf#run({
+\   'source':  <sid>buffer_lines(),
+\   'sink':    function('<sid>line_handler'),
+\   'options': '--extended --nth=3..',
+\   'down':    '60%'
+\})
+
+nnoremap <leader>f :FZFLines <CR> 
+
+" Toggle GOYO
+nnoremap <leader>go :Goyo <CR>
+
+" Save and quit remap 
+nnoremap <leader>wq :wq <CR>
+
+
+" Keeps background transparent for all colorschemes
+" function! AdaptColorscheme()
+"     highlight clear CursorLine
+""    highlight Normal ctermbg=none
+"     highlight LineNr ctermbg=none
+"     highlight Folded ctermbg=none
+"     highlight NonText ctermbg=none
+"     highlight SpecialKey ctermbg=none
+"     highlight VertSplit ctermbg=none
+"     highlight SignColumn ctermbg=none
+" endfunction
+" autocmd ColorScheme * call AdaptColorscheme()
+
+" set t_8f=^[[38;2;%lu;%lu;%lum        " set foreground color
+" set t_8b=^[[48;2;%lu;%lu;%lum        " set background color

@@ -30,6 +30,7 @@ c.content.developer_extras = True
 c.colors.webpage.bg = "black"
 
 c.content.user_stylesheets = "/home/instincts/darculized-everything-css/css/darculized/darculized-all-sites.css"
+c.content.user_stylesheets = "/home/instincts/solarized-everything-css/css/solarized-all-sites-dark.css"
 
 
 
