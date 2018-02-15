@@ -27,7 +27,7 @@ global:
   completion.height: 40%
   completion.shrink: false
   completion.web_history_max_items: -1
-  content.user_stylesheets: /home/instincts/darculized-everything-css/css/darculized/darculized-all-sites.css
+  content.user_stylesheets: /home/instincts/darculized-everything-css/css/gruvbox/gruvbox-all-sites.css
   downloads.location.directory: ~/Downloads
   fonts.keyhint: 10pt monospace
   fonts.monospace: '"xos4 Terminus", Terminus, Monospace, "DejaVu Sans Mono", Monaco,

@@ -1,3 +1,4 @@
+# BASH DEFAULTS
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -85,7 +86,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+# export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -111,7 +112,7 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
-
+# PYWAL
 # Related to pywal
 # Import colorscheme from 'wal'
 # &   # Run the process in the background.
@@ -121,10 +122,6 @@ fi
 # If the command above doesn't work,
 # try this alternative.
 # setsid wal -r
-
-# for vim in bash
-set -o vi
-
 
 # Aliases #
 alias cfi='vim ~/.config/i3/config'
@@ -167,22 +164,20 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias sv='sudo vim'
-
+# EXPORTED VARIABLES
 export EDITOR='vim'
 export BROWSER="qutebrowser"
 export BROWSERCLI="w3m"
 export CHEATCOLORS=true
-
-PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\[$(tput setaf 2)\]\[$(tput setaf 4)\]\[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\] [\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\n  \e[38;5;82m>>>:\$ \[$(tput sgr0)\]"
 export PS1
-
-
+# PS1
+PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\[$(tput setaf 2)\]\[$(tput setaf 4)\]\[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\] [\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\n  \e[38;5;82m>>>:\$ \[$(tput sgr0)\]"
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob 
 # mutt background fix
 export COLORFGBG="default;default"
-
-
+# for vim in bash
+set -o vi
 # Color Manpages
 export LESS_TERMCAP_mb=$'\E[01;31m'             # begin blinking
 export LESS_TERMCAP_md=$'\E[01;31m'             # begin bold
@@ -191,8 +186,7 @@ export LESS_TERMCAP_se=$'\E[0m'                 # end standout-mode
 export LESS_TERMCAP_so=$'\E[01;44;33m'          # begin standout-mode - info box                              
 export LESS_TERMCAP_ue=$'\E[0m'                 # end underline
 export LESS_TERMCAP_us=$'\E[01;32m'             # begin underline
-
-
+# Wget (Retrieve Files From The Web)
 #-------- Wget (Retrieve Files From The Web) {{{
 #------------------------------------------------------
 wget-extension() {
@@ -211,7 +205,6 @@ cd "$outputdir_name" && wget -r -l1 -H -t1 -nd -N -np -A "$1" -erobots=off "$2"
                                   }
 
                                   # }}}
-
 # fasd and fzf
 eval "$(fasd --init auto)"
 
@@ -228,3 +221,6 @@ _fasd_bash_hook_cmd_complete v m j o
 export FZF_DEFAULT_OPTS='
 --color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229
 --color info:150,prompt:110,spinner:150,pointer:167,marker:174'
+# Base16 colors vim 
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
