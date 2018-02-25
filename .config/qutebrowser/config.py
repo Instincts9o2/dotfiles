@@ -7,7 +7,7 @@ c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?hl=en&q={}','aw
 # HINTS
 c.hints.chars = 'asdfghjklweroiumvcp'
 c.hints.uppercase = True 
-c.keyhint.delay = 1
+c.keyhint.delay = 0
 
 # Tabs related
 c.tabs.new_position.unrelated = "next"

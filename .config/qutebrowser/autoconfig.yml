@@ -5,6 +5,7 @@ config_version: 1
 global:
   bindings.commands:
     normal:
+      C-k: scroll-px
       H: tab-prev
       J: back
       K: forward
@@ -38,8 +39,9 @@ global:
   messages.timeout: 5000
   statusbar.hide: false
   tabs.position: top
-  tabs.show: switching
+  tabs.show: always
   tabs.show_switching_delay: 8000
+  tabs.width: 60
   url.default_page: https://start.google.com/
   url.searchengines:
     DEFAULT: https://duckduckgo.com/?q={}

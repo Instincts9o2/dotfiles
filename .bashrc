@@ -159,11 +159,14 @@ alias red='redshift -c /home/instincts/.config/redshift.conf &'
 alias pkb='pkill blurme'
 alias blur='cd /home/instincts/.Scripts/ && ./blurme.sh &'
 alias gdot='config status'
+alias sai='sudo apt install'
+alias as='apt search'
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias sv='sudo vim'
+alias ex='exit'
 # EXPORTED VARIABLES
 export EDITOR='vim'
 export BROWSER="qutebrowser"
