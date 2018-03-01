@@ -127,6 +127,9 @@ set $inactive-text-color #676E7D
     bindsym $mod+w move               scratchpad
     bindsym $mod+semicolon            scratchpad show; border pixel 4
 
+# Sticky toggle
+    bindsym $mod+i                    sticky toggle
+
 # Dynamic resize
     bindsym $mod+Shift+y	resize shrink width 20 px or 20 ppt
     bindsym $mod+Shift+u	resize shrink height 20 px or 20 ppt
@@ -227,10 +230,10 @@ exec --no-startup-id sudo mount -a
 # } 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier   $mod
+floating_modifier $mod
 
 #For no window bar
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 4
 hide_edge_borders both
 
 #inner and outer gaps
