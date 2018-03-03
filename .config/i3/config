@@ -69,7 +69,6 @@ set $inactive-text-color #676E7D
 
 # set $flash --no-startup-id bash ~/.Scripts/flash.sh
 
-
 # Key-Bindings
 # Nothing to change
 # Switch to workspace
@@ -211,6 +210,7 @@ set $inactive-text-color #676E7D
 # EXEC AND EXEC_ALWAYS
 exec qutebrowser 
 exec --no-startup-id mpd
+exec --no-startup-id transmission-daemon
 exec --no-startup-id nm-applet
 
 # Unclutter makes the mouse invisible after a brief period

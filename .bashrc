@@ -160,13 +160,16 @@ alias pkb='pkill blurme'
 alias blur='cd /home/instincts/.Scripts/ && ./blurme.sh &'
 alias gdot='config status'
 alias sai='sudo apt install'
+alias sar='sudo apt remove'
 alias as='apt search'
+alias sv='sudo vim'
+alias ex='exit'
+alias bit='transmission-remote-cli'
+alias tra='transmission-remote -a'
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias sv='sudo vim'
-alias ex='exit'
 # EXPORTED VARIABLES
 export EDITOR='vim'
 export BROWSER="qutebrowser"
@@ -182,13 +185,13 @@ export COLORFGBG="default;default"
 # for vim in bash
 set -o vi
 # Color Manpages
-export LESS_TERMCAP_mb=$'\E[01;31m'             # begin blinking
-export LESS_TERMCAP_md=$'\E[01;31m'             # begin bold
-export LESS_TERMCAP_me=$'\E[0m'                 # end mode
-export LESS_TERMCAP_se=$'\E[0m'                 # end standout-mode                 
-export LESS_TERMCAP_so=$'\E[01;44;33m'          # begin standout-mode - info box                              
-export LESS_TERMCAP_ue=$'\E[0m'                 # end underline
-export LESS_TERMCAP_us=$'\E[01;32m'             # begin underline
+# export LESS_TERMCAP_mb=$'\E[01;31m'             # begin blinking
+# export LESS_TERMCAP_md=$'\E[01;31m'             # begin bold
+# export LESS_TERMCAP_me=$'\E[0m'                 # end mode
+# export LESS_TERMCAP_se=$'\E[0m'                 # end standout-mode                 
+# export LESS_TERMCAP_so=$'\E[01;44;33m'          # begin standout-mode - info box                              
+# export LESS_TERMCAP_ue=$'\E[0m'                 # end underline
+# export LESS_TERMCAP_us=$'\E[01;32m'             # begin underline
 # Wget (Retrieve Files From The Web)
 #-------- Wget (Retrieve Files From The Web) {{{
 #------------------------------------------------------
