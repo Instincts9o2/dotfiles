@@ -1,0 +1,10 @@
+command & 
+
+# this will make the background command run even if the terminal is closed
+disown 
+
+# Makes the command not print anything to the current terminal (stdout goes to /dev/null)
+command &> /dev/null &
+
+# This will background the process/command and will keep it running without the disown command
+nohup command &> /dev/null &
