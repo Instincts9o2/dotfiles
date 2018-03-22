@@ -21,7 +21,8 @@ font pango:DejaVu Sans Mono 8
 # font, it doesn’t scale on retina/hidpi displays.
 
 # Initializing Variables
-set $mod Control
+set $ctrl Control
+set $mod Mod4
 
 # Suckless 
 set $term st
@@ -210,7 +211,7 @@ set $inactive-text-color #676E7D
 # EXEC AND EXEC_ALWAYS
 exec qutebrowser 
 exec --no-startup-id mpd
-exec --no-startup-id transmission-daemon
+exec --no-startup-id transmission-daemon -g /home/instincts/.config/transmission-daemon
 exec --no-startup-id nm-applet
 
 # Unclutter makes the mouse invisible after a brief period
@@ -220,6 +221,8 @@ exec --no-startup-id compton --config ~/.config/compton/config -b
 exec feh --bg-fill /home/instincts/Downloads/Landscapes/landscape_7.jpg
 exec_always bash xrdb ~/.Xresources
 exec_always bash xmodmap ~/.Xmodmap
+exec_always bash xset r rate 250 60 
+
 
 # Mount other drives:
 exec --no-startup-id sudo mount -a
@@ -250,5 +253,5 @@ client.background                           $bg-color
 # Qutebrowser spawning on workspace 1
 for_window [class="qutebrowser"] move to workspace $ws1
 
-#Remaps the caps lock button to escape and uses the US international keyboard with dead keys
+# Remaps the caps lock button to escape and uses the US international keyboard with dead keys
 exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl -option caps:escape
