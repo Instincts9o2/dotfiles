@@ -22,22 +22,23 @@ font pango:DejaVu Sans Mono 8
 
 # Initializing Variables
 set $ctrl Control
-set $mod Mod4
+set $mod Mod1
+# Mod4 is super key
 
 # Suckless 
 set $term st
 
 #Workspace settings 
-set $ws1 "Research"
-set $ws2 "</>"
-set $ws3 "Random"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "Mutt"
-set $ws10 "Ncmpcpp"
+set $ws9 "9"
+set $ws10 "10"
 
 ###---Audio and Music Definitions---###
 ###For mpc:
@@ -61,12 +62,13 @@ set $truemute --no-startup-id amixer sset Master mute
 set $headphonetoggle --no-startup-id amixer -c 1 sset Headphone toggle
 
 # Color variables 
-set $bg-color            #1d1f21
-set $bd-color            #ff00ff
-set $inactive-bg-color   #383C4A
-set $inactive-bd-color   #383C4A
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
+set $bg-color            #00000000
+set $bf-color            #E0FFFF
+set $bd-color            #00000000
+set $inactive-bg-color   #00000000
+set $inactive-bd-color   #00000000
+set $text-color          #00000000
+set $inactive-text-color #00000000
 
 # set $flash --no-startup-id bash ~/.Scripts/flash.sh
 
@@ -96,12 +98,14 @@ set $inactive-text-color #676E7D
     bindsym $mod+Shift+0    move container to workspace $ws10
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-    bindsym $mod+Shift+r        restart
+    bindsym $mod+Shift+r        restart 
 # exit i3 (logs you out of your X session)
     bindsym $mod+Shift+e        exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Workspace back and forth
-    bindsym $mod+a               workspace back_and_forth
+    bindsym $mod+Tab               workspace back_and_forth
+    bindsym $mod+n                 workspace next
+    bindsym $mod+semicolon         workspace prev
 
 # Spawning Terminal    
     bindsym $mod+apostrophe     split horizontal ;; exec $term
@@ -124,19 +128,19 @@ set $inactive-text-color #676E7D
     bindsym $mod+Shift+space     floating toggle
 
 # Scratchpad 
-    bindsym $mod+w move               scratchpad
-    bindsym $mod+semicolon            scratchpad show; border pixel 4
+    bindsym $mod+w                    move scratchpad 
+    bindsym $mod+u                    scratchpad show; resize set 400 300
 
 # Sticky toggle
     bindsym $mod+i                    sticky toggle
 
 # Dynamic resize
-    bindsym $mod+Shift+y	resize shrink width 20 px or 20 ppt
-    bindsym $mod+Shift+u	resize shrink height 20 px or 20 ppt
-    bindsym $mod+Shift+i	resize grow height 20 px or 20 ppt
-    bindsym $mod+Shift+o	resize grow width 20 px or 20 ppt
+    bindsym $mod+Shift+o	resize shrink width 5 px or 5 ppt
+    bindsym $mod+Shift+i	resize shrink height 5 px or 5 ppt
+    bindsym $mod+Shift+u	resize grow height 5 px or 5 ppt
+    bindsym $mod+Shift+y	resize grow width 5 px or 5 ppt
 # Gaps
-    bindsym $mod+Shift+d 	gaps inner current set 8; gaps outer current set 14
+    bindsym $mod+Shift+d 	gaps inner current set 12; gaps outer current set 13
     bindsym $mod+t              gaps inner current set 0; gaps outer current set 0
     bindsym $mod+z              gaps outer current plus 2
     bindsym $mod+Shift+z        gaps outer current minus 2
@@ -218,40 +222,51 @@ exec --no-startup-id nm-applet
 exec --no-startup-id unclutter
 
 exec --no-startup-id compton --config ~/.config/compton/config -b 
-exec feh --bg-fill /home/instincts/Downloads/Landscapes/landscape_7.jpg
+exec feh --bg-fill /home/instincts/Downloads/Landscapes/1490458850160.jpg
 exec_always bash xrdb ~/.Xresources
-exec_always bash xmodmap ~/.Xmodmap
-exec_always bash xset r rate 250 60 
+exec --no-startup-id xmodmap ~/.Xmodmap
+exec_always --no-startup-id ~/Solstice/bash_scripts/alsa/alsa.sh
+exec_always --no-startup-id xset r rate 250 60 
+focus_follows_mouse no
 
 
 # Mount other drives:
 exec --no-startup-id sudo mount -a
 
 # SETTINGS
-# bar {
-#     i3bar_command $HOME/.config/polybar/launch.sh 
-# } 
+bar {
+    status_command i3blocks -c ~/i3blocks.conf
+        position top
+        font xft:Source Code Pro Medium 9 
+        mode dock
+        modifier None
+} 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 #For no window bar
-for_window [class="^.*"] border pixel 4
+for_window [class="^.*"] border pixel 3
 hide_edge_borders both
 
 #inner and outer gaps
-gaps inner 8
+gaps inner 12
 gaps outer 14
 
-#                           border          background      text                 indicator  child border 
-client.focused              $bd-color       $bg-color       $text-color          $bd-color  $bd-color  
-client.unfocused            $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
-client.focused_inactive     $bg-color       $bg-color       $inactive-text-color $bg-color  $bg-color
-client.urgent               $bg-color       $bg-color       $text-color          $bg-color  $bg-color
-client.background                           $bg-color
+# client.focused              $bf-color           $bf-color       $text-color          $bf-color  $bf-color  
+#859900cc
+# #                           border              background      text              indicator  child border 
+client.focused                  #00FFFFBF #00FFFFBF #fdf6e3FF #00FFFFBF
+client.unfocused            $inactive-bd-color  $bg-color       $text-color          $bg-color  $inactive-bd-color
+client.focused_inactive     $bg-color           $bg-color       $inactive-text-color $bg-color  $bg-color
+client.urgent               $bf-color           $bg-color       $text-color          $bg-color  $bf-color
+client.background                               $bg-color
 
-# Qutebrowser spawning on workspace 1
+# Spawning programs on different workspaces
 for_window [class="qutebrowser"] move to workspace $ws1
+for_window [class="libreoffice"] move to workspace $ws4
+for_window [class="google-chrome-stable"] move to workspace $ws3
+for_window [class="google-chrome"] move to workspace $ws3
 
 # Remaps the caps lock button to escape and uses the US international keyboard with dead keys
 exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl -option caps:escape

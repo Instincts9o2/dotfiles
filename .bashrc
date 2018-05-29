@@ -166,8 +166,13 @@ alias sv='sudo vim'
 alias ex='exit'
 alias bit='transmission-remote-cli'
 alias tra='transmission-remote -a'
-alias hibernate='sudo systemctl hibernate'
+alias hibernate='nmcli c down uuid 85f4a51b-7f29-4f32-a438-a0e32380b98b && sudo systemctl hibernate'
 alias suspend='systemctl suspend'
+alias wfup='nmcli c up uuid 85f4a51b-7f29-4f32-a438-a0e32380b98b'
+alias wfdown='nmcli c down uuid 85f4a51b-7f29-4f32-a438-a0e32380b98b'
+alias newsboat='/snap/newsboat/170/usr/local/bin/newsboat -u ~/.newsboat/urls -C ~/.newsboat/config'
+alias cal='calcurse'
+alias smi='sudo make install'
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -181,8 +186,31 @@ export PS1
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
 export LANGUAGE=en_IN.UTF-8
-# PS1
-PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\[$(tput setaf 2)\]\[$(tput setaf 4)\]\[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\] [\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\n  \e[38;5;82m>>>:\$ \[$(tput sgr0)\]"
+PROMPT_COMMAND=__prompt_command # Func to gen PS1 after CMDs
+
+__prompt_command() {
+    local EXIT="$?"             # This needs to be first
+    # PS1
+    PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\[$(tput setaf 2)\]\[$(tput setaf 4)\]\[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\] [\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\n  \e[38;5;82m>>>:\$ \[$(tput sgr0)\]"
+
+
+    local RCol='\[\e[0m\]'
+
+    local Red='\[\e[0;31m\]'
+    local Gre='\[\e[0;32m\]'
+    local BYel='\[\e[1;33m\]'
+    local BBlu='\[\e[1;34m\]'
+    local Pur='\[\e[0;35m\]'
+
+    if [ $EXIT != 0 ]; then
+        PS1+="${Red}${RCol}"      # Add red if exit code non 0
+    else
+        PS1+="${Gre}${RCol}"
+    fi
+
+    PS1+="${RCol}${BBlu}${Pur}${BYel}${RCol}"
+}
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob 
 # mutt background fix
@@ -220,19 +248,18 @@ cd "$outputdir_name" && wget -r -l1 -H -t1 -nd -N -np -A "$1" -erobots=off "$2"
 eval "$(fasd --init auto)"
 
 alias v='f -e vim' # quick opening files with vim
-# alias m='f -e mpv' # quick opening files with mpv
-# alias o='a -e xdg-open' # quick opening files with xdg-open
+alias m='f -e mpv' # quick opening files with mpv
+alias o='a -e xdg-open' # quick opening files with xdg-open
 
-_fasd_bash_hook_cmd_complete v 
-# m j o
+_fasd_bash_hook_cmd_complete v m j o
 
 #fzf
-# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # FZF colorscheme
 export FZF_DEFAULT_OPTS='
 --color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229
 --color info:150,prompt:110,spinner:150,pointer:167,marker:174'
-# Base16 colors vim 
+# # Base16 colors vim 
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
