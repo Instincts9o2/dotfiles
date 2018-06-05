@@ -79,13 +79,15 @@ settings:
     global: 8000
   tabs.width:
     global: 60
+  tabs.wrap:
+    global: true
   url.default_page:
     global: https://start.google.com/
   url.searchengines:
     global:
       DEFAULT: https://duckduckgo.com/?q={}
   zoom.default:
-    global: '95'
+    global: 100%
   zoom.levels:
     global:
     - 25%

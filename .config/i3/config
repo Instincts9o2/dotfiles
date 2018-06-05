@@ -29,16 +29,16 @@ set $mod Mod1
 set $term st
 
 #Workspace settings 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
+set $ws1 "1:  "
+set $ws2 "2:  "
+set $ws3 "3:  "
+set $ws4 "4:  "
+set $ws5 "5:  "
+set $ws6 "6:  "
 set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws8 "8:  "
+set $ws9 "9:  "
+set $ws10 "10:  "
 
 ###---Audio and Music Definitions---###
 ###For mpc:
@@ -62,11 +62,11 @@ set $truemute --no-startup-id amixer sset Master mute
 set $headphonetoggle --no-startup-id amixer -c 1 sset Headphone toggle
 
 # Color variables 
-set $bg-color            #00000000
-set $bf-color            #E0FFFF
-set $bd-color            #00000000
-set $inactive-bg-color   #00000000
-set $inactive-bd-color   #00000000
+set $bg-color            #282c34FF
+set $bf-color            #282c34FF
+set $bd-color            #282c34FF
+set $inactive-bg-color   #282c34FF
+set $inactive-bd-color   #282c34FF
 set $text-color          #00000000
 set $inactive-text-color #00000000
 
@@ -129,19 +129,19 @@ set $inactive-text-color #00000000
 
 # Scratchpad 
     bindsym $mod+w                    move scratchpad 
-    bindsym $mod+u                    scratchpad show; resize set 400 300
+    bindsym $mod+u                    scratchpad show; resize set 600 400
 
 # Sticky toggle
     bindsym $mod+i                    sticky toggle
 
 # Dynamic resize
-    bindsym $mod+Shift+o	resize shrink width 5 px or 5 ppt
+    bindsym $mod+Shift+y	resize shrink width 5 px or 5 ppt
     bindsym $mod+Shift+i	resize shrink height 5 px or 5 ppt
     bindsym $mod+Shift+u	resize grow height 5 px or 5 ppt
-    bindsym $mod+Shift+y	resize grow width 5 px or 5 ppt
+    bindsym $mod+Shift+o	resize grow width 5 px or 5 ppt
 # Gaps
     bindsym $mod+Shift+d 	gaps inner current set 12; gaps outer current set 13
-    bindsym $mod+t              gaps inner current set 0; gaps outer current set 0
+    bindsym $mod+t              gaps inner current set 6; gaps outer current set 6
     bindsym $mod+z              gaps outer current plus 2
     bindsym $mod+Shift+z        gaps outer current minus 2
     bindsym $mod+f              fullscreen toggle
@@ -154,7 +154,8 @@ set $inactive-text-color #00000000
     bindsym $mod+Shift+s                exec dmenu_run
     bindsym $mod+Shift+g                exec qutebrowser 
     bindsym $mod+Return                 exec $term 
-    bindsym $mod+Home                   exec nautilus --no-desktop
+    bindsym $mod+Home                   exec thunar
+    # bindsym $mod+Home                   exec nautilus --no-desktop
 
 # Music Bindings
 # For advancing forward/backward in an mpd song
@@ -222,25 +223,30 @@ exec --no-startup-id nm-applet
 exec --no-startup-id unclutter
 
 exec --no-startup-id compton --config ~/.config/compton/config -b 
-exec feh --bg-fill /home/instincts/Downloads/Landscapes/1490458850160.jpg
+exec feh --bg-fill /home/instincts/Downloads/Landscapes/Dark/1491186979062.jpg 
 exec_always bash xrdb ~/.Xresources
+exec_always --no-startup-id bash $HOME/.config/polybar/launch.sh
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec_always --no-startup-id ~/Solstice/bash_scripts/alsa/alsa.sh
 exec_always --no-startup-id xset r rate 250 60 
 focus_follows_mouse no
 
 
+popup_during_fullscreen smart
+
 # Mount other drives:
 exec --no-startup-id sudo mount -a
 
 # SETTINGS
-bar {
-    status_command i3blocks -c ~/i3blocks.conf
-        position top
-        font xft:Source Code Pro Medium 9 
-        mode dock
-        modifier None
-} 
+# bar {
+#     status_command i3blocks -c ~/i3blocks.conf
+#         position top
+#         font xft:Source Code Pro Medium 9 
+#         mode dock
+#         modifier None
+# } 
+
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -255,8 +261,10 @@ gaps outer 14
 
 # client.focused              $bf-color           $bf-color       $text-color          $bf-color  $bf-color  
 #859900cc
+# client.focused                  #ff7f7fFF #ff7f7fFF #fdf6e3FF #ff7f7fFF
+
 # #                           border              background      text              indicator  child border 
-client.focused                  #00FFFFBF #00FFFFBF #fdf6e3FF #00FFFFBF
+client.focused                  #c5a9f9FF #c5a9f9FF #fdf6e3FF #c5a9f9FF
 client.unfocused            $inactive-bd-color  $bg-color       $text-color          $bg-color  $inactive-bd-color
 client.focused_inactive     $bg-color           $bg-color       $inactive-text-color $bg-color  $bg-color
 client.urgent               $bf-color           $bg-color       $text-color          $bg-color  $bf-color
@@ -270,3 +278,8 @@ for_window [class="google-chrome"] move to workspace $ws3
 
 # Remaps the caps lock button to escape and uses the US international keyboard with dead keys
 exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl -option caps:escape
+
+exec_always --no-startup-id killall -q keynav && keynav &
+
+
+

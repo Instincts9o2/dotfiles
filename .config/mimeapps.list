@@ -7,4 +7,4 @@ x-scheme-handler/unknown=google-chrome.desktop
 
 [Added Associations]
 video/quicktime=mpv.desktop;
-image/jpeg=shotwell-viewer.desktop;
+image/jpeg=eog.desktop;shotwell-viewer.desktop;
