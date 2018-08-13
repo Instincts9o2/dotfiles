@@ -74,7 +74,7 @@ settings:
   tabs.position:
     global: top
   tabs.show:
-    global: never
+    global: always
   tabs.show_switching_delay:
     global: 8000
   tabs.width:

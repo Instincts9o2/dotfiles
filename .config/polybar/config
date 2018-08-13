@@ -190,24 +190,25 @@ ramp-volume-2 = 
 [module/mpd]
 type = internal/mpd
 
-label-offline = mpd is offline
-format-online = <icon-prev> <toggle> <icon-next> <label-song>
+label-offline = 
+format-online = 
 format-offline = <label-offline>
 host = 127.0.0.1
 port = 6600
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+; icon-prev = 
+; icon-stop = 
+; icon-play = 
+; icon-pause = 
+; icon-next = 
 
-label-song-maxlen = 25
-label-song-ellipsis = true
+; label-song = %title%
+; label-song-maxlen = 25
+; label-song-ellipsis = true
 
-bar-progress-width = 10
-bar-progress-indicator = |
-bar-progress-fill = ─
-bar-progress-empty = ─
+; bar-progress-width = 10
+; bar-progress-indicator = |
+; bar-progress-fill = ─
+; bar-progress-empty = ─
 
 [module/backlight]
 type = internal/backlight
@@ -231,8 +232,8 @@ interface = wlx60e3270b725e
 
 interval = 5
 
-label-connected =  
-label-disconnected =  Nah   
+label-connected =  
+label-disconnected =  
 
 [module/cpu]
 type = internal/cpu

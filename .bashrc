@@ -76,7 +76,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" && eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    # alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -132,7 +132,7 @@ alias cfr='vim ~/.config/ranger/rc.conf'
 alias cfx='sudo vim ~/.Xresources'
 alias cfb='vim ~/.bashrc'
 alias cfv='vim ~/.vimrc'
-alias ccr='compton --config ~/.config/compton/config -b'
+alias ccr='killall compton && compton --config ~/.config/compton/config -b'
 alias cfn='vim ~/.ncmpcpp/config'
 alias cft='vim ~/.tmux.conf'
 alias tmux='tmux -2u'
@@ -146,10 +146,10 @@ alias bandho='sudo poweroff'
 alias restart='sudo reboot'
 alias sounds='~/Solstice/bash_scripts/alsa/alsa.sh'
 alias cl="clear && printf '\e[3J'"
-alias pg='ping www.google.com'
+alias pg='ping -f -i 0.5 www.google.com'
 alias tk='tmux kill-session'
 alias xmod='xmodmap ~/.Xmodmap'
-alias ls='ls -hN --color=auto --group-directories-first'
+alias ls='ls -phN --color=auto --group-directories-first'
 alias bars="bash ~/.config/polybar/launch.sh"
 alias pkp="pkill polybar"
 alias clock="ncmpcpp -s clock"
@@ -170,9 +170,11 @@ alias hibernate='nmcli c down uuid 85f4a51b-7f29-4f32-a438-a0e32380b98b && sudo 
 alias suspend='systemctl suspend'
 alias wfup='nmcli c up uuid 85f4a51b-7f29-4f32-a438-a0e32380b98b'
 alias wfdown='nmcli c down uuid 85f4a51b-7f29-4f32-a438-a0e32380b98b'
+alias mp3down='youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 $1'
 alias newsboat='/snap/newsboat/170/usr/local/bin/newsboat -u ~/.newsboat/urls -C ~/.newsboat/config'
 alias cal='calcurse'
 alias smi='sudo make install'
+alias w3m='w3m -B'
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -257,9 +259,16 @@ _fasd_bash_hook_cmd_complete v m j o
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # FZF colorscheme
-export FZF_DEFAULT_OPTS='
---color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229
---color info:150,prompt:110,spinner:150,pointer:167,marker:174'
+# export FZF_DEFAULT_OPTS='
+# --color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229
+# --color info:150,prompt:110,spinner:150,pointer:167,marker:174'
 # # Base16 colors vim 
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+
+trans() {
+sudo killall transmission-daemon
+transmission-daemon -g /home/instincts/.config/transmission-daemon
+}
+

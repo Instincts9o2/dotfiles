@@ -18,7 +18,7 @@ config.bind('K', 'forward', mode='normal')
 
 # Settings
 c.confirm_quit = ["always"]
-c.content.developer_extras = True
+# c.content.developer_extras = True
 c.scrolling.smooth = True
 c.content.user_stylesheets = "/home/instincts/darculized-everything-css/css/darculized/darculized-all-sites.css"
 
