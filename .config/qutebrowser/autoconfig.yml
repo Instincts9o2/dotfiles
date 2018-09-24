@@ -45,7 +45,7 @@ settings:
     global: 40%
   completion.shrink:
     global: false
-  completion.web_history_max_items:
+  completion.web_history.max_items:
     global: -1
   content.user_stylesheets:
     global: /home/instincts/darculized-everything-css/css/gruvbox/gruvbox-all-sites.css
@@ -54,9 +54,9 @@ settings:
   fonts.keyhint:
     global: 10pt monospace
   fonts.monospace:
-    global: '"Roboto Mono for Powerline","xos4 Terminus", Terminus, Monospace, "DejaVu
-      Sans Mono", Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New",
-      Courier, "Liberation Mono", monospace, Fixed, Consolas, Terminal'
+    global: '"Roboto Mono for Powerline", Terminus, Monospace, "DejaVu Sans Mono",
+      Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier, "Liberation
+      Mono", monospace, Fixed, Consolas, Terminal'
   fonts.web.size.minimum_logical:
     global: 6
   input.insert_mode.auto_load:

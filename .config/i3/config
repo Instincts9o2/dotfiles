@@ -7,11 +7,11 @@
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:monospace 0
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 3
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -20,6 +20,7 @@ font pango:DejaVu Sans Mono 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# **************************** SET ****************************
 # Initializing Variables
 set $ctrl Control
 set $mod Mod1
@@ -62,17 +63,17 @@ set $truemute --no-startup-id amixer sset Master mute
 set $headphonetoggle --no-startup-id amixer -c 1 sset Headphone toggle
 
 # Color variables 
-set $bg-color            #282c34FF
-set $bf-color            #282c34FF
-set $bd-color            #282c34FF
-set $inactive-bg-color   #282c34FF
-set $inactive-bd-color   #282c34FF
+set $bg-color            #00000000
+set $bf-color            #00000000
+set $bd-color            #00000000
+set $inactive-bg-color   #00000000
+set $inactive-bd-color   #00000000
 set $text-color          #00000000
 set $inactive-text-color #00000000
 
 # set $flash --no-startup-id bash ~/.Scripts/flash.sh
 
-# Key-Bindings
+# *********************  Key-Bindings  *****************************   
 # Nothing to change
 # Switch to workspace
     bindsym $mod+1      workspace $ws1
@@ -110,9 +111,19 @@ set $inactive-text-color #00000000
     bindsym $mod+n                 workspace next
     bindsym $mod+semicolon         workspace prev
 
+# Layouts
+    bindsym $mod+s       layout stacking 
+    bindsym $mod+t       layout tabbed
+    bindsym $mod+a       focus parent
+    bindsym $mod+y       layout default
+
+
+
 # Spawning Terminal    
     bindsym $mod+apostrophe     split horizontal ;; exec $term
     bindsym $mod+slash          split vertical ;; exec $term
+    bindsym $mod+v              exec $term
+
 
 # kill focused window
     bindsym $mod+q              kill
@@ -155,7 +166,7 @@ set $inactive-text-color #00000000
     bindsym $mod+Shift+o	resize grow width 5 px or 5 ppt
 # Gaps
     bindsym $mod+Shift+d 	gaps inner current set 12; gaps outer current set 13
-    bindsym $mod+Shift+t        gaps inner current set 6; gaps outer current set 6
+    bindsym $mod+Shift+t        gaps inner current set 1; gaps outer current set 1
     bindsym $mod+z              gaps outer current plus 2
     bindsym $mod+Shift+z        gaps outer current minus 2
     bindsym $mod+f              fullscreen toggle
@@ -195,12 +206,8 @@ set $inactive-text-color #00000000
 # bindsym $mod+Shift+slash 
 # bindsym $mod+Shift+greater 
 # bindsym $mod+Shift+x          
-# bindsym $mod+s          
-# bindsym $mod+g                      
 # bindsym $mod+Shift+Home 
 # bindsym $mod+Shift+apostrophe
-# bindsym $mod+t
-# bindsym $mod+y
 # bindsym $mod+Shift+semicolon 
 # bindsym $mod+Shift+w 
 # bindsym $mod+Shift+c reload
@@ -208,8 +215,6 @@ set $inactive-text-color #00000000
 # bindsym $mod+Shift+b 
 # bindsym $mod+Shift+f 
 # bindsym $mod+Shift+v 
-# bindsym $mod+v 
-# bindsym $mod+n
 # bindsym $mod+Shift+Right 
 # bindsym $mod+Shift+Left 
 # bindsym $mod+Shift+Down
@@ -232,28 +237,29 @@ exec --no-startup-id nm-applet
 exec --no-startup-id unclutter
 
 exec --no-startup-id compton --config ~/.config/compton/config -b 
-exec feh --bg-fill /home/instincts/Downloads/Landscapes/Dark/1491186979062.jpg 
+exec feh --bg-fill /home/instincts/Downloads/Pranav/onecolor.png
 # exec_always --no-startup-id "bash xrdb ~/.Xresources"
-exec_always --no-startup-id bash ~/.config/polybar/launch.sh
-exec_always --no-startup-id sleep 3 && xmodmap ~/.Xmodmap
+# exec_always --no-startup-id bash ~/.config/polybar/launch.sh
+exec_always --no-startup-id sleep 2 && xmodmap ~/.Xmodmap
 exec_always --no-startup-id sleep 2.5 && bash ~/Solstice/bash_scripts/alsa/alsa.sh
-exec_always --no-startup-id xset r rate 250 60 
+exec_always --no-startup-id sleep 1 && xset r rate 250 60 
 focus_follows_mouse no
 
 
+force_focus_wrapping no
 popup_during_fullscreen smart
 
 # Mount other drives:
 exec --no-startup-id sudo mount -a
 
 # SETTINGS
-# bar {
-#     status_command i3blocks -c ~/i3blocks.conf
-#         position top
-#         font xft:Source Code Pro Medium 9 
-#         mode dock
-#         modifier None
-# } 
+bar {
+    status_command i3blocks -c ~/i3blocks.conf
+        position bottom
+        font xft:Source Code Pro Medium 9 
+        mode dock
+        modifier None
+} 
 
 
 
@@ -261,22 +267,20 @@ exec --no-startup-id sudo mount -a
 floating_modifier $mod
 
 #For no window bar
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 hide_edge_borders both
 
 #inner and outer gaps
-gaps inner 6
-gaps outer 6
+gaps inner 1
+gaps outer 1 
 
-# client.focused              $bf-color           $bf-color       $text-color          $bf-color  $bf-color  
-#859900cc
-# client.focused                  #ff7f7fFF #ff7f7fFF #fdf6e3FF #ff7f7fFF
 
-# #                           border              background      text              indicator  child border 
-client.focused                  #c5a9f9FF #c5a9f9FF #fdf6e3FF #c5a9f9FF
-client.unfocused            $inactive-bd-color  $bg-color       $text-color          $bg-color  $inactive-bd-color
-client.focused_inactive     $bg-color           $bg-color       $inactive-text-color $bg-color  $bg-color
-client.urgent               $bf-color           $bg-color       $text-color          $bg-color  $bf-color
+# #                         border              background      text              indicator  child border 
+client.focused              #778899FF           #778899FF       #fdf6e3FF            #778899FF  #778899FF 
+# client.unfocused          #00000000           #00000000       #00000000           #00000000   #00000000  
+client.unfocused          $inactive-bd-color  $bg-color       $text-color          $bg-color  $inactive-bd-color
+client.focused_inactive   $bg-color           $bg-color       $inactive-text-color $bg-color  $bg-color
+client.urgent             $bf-color           $bg-color       $text-color          $bg-color  $bf-color
 client.background                               $bg-color
 
 # Spawning programs on different workspaces

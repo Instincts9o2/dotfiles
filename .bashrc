@@ -166,15 +166,32 @@ alias sv='sudo vim'
 alias ex='exit'
 alias bit='transmission-remote-cli'
 alias tra='transmission-remote -a'
-alias hibernate='nmcli c down uuid 85f4a51b-7f29-4f32-a438-a0e32380b98b && sudo systemctl hibernate'
 alias suspend='systemctl suspend'
 alias wfup='nmcli c up uuid 85f4a51b-7f29-4f32-a438-a0e32380b98b'
 alias wfdown='nmcli c down uuid 85f4a51b-7f29-4f32-a438-a0e32380b98b'
-alias mp3down='youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 $1'
 alias newsboat='/snap/newsboat/170/usr/local/bin/newsboat -u ~/.newsboat/urls -C ~/.newsboat/config'
 alias cal='calcurse'
 alias smi='sudo make install'
 alias w3m='w3m -B'
+
+mp3down(){
+youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 "$1"
+}
+
+
+hiber(){
+    if [[ "$(nmcli connection show --active | awk 'NR == 2' | awk '{print $1}')" == "INSTINCTS" ]]; then
+    nmcli c down uuid 85f4a51b-7f29-4f32-a438-a0e32380b98b 
+    sudo systemctl hibernate
+else 
+    sudo systemctl hibernate
+fi
+}
+# alias hibernate='nmcli c down uuid 85f4a51b-7f29-4f32-a438-a0e32380b98b && sudo systemctl hibernate'
+
+
+
+# alias mp3down='youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 $1'
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -250,13 +267,14 @@ cd "$outputdir_name" && wget -r -l1 -H -t1 -nd -N -np -A "$1" -erobots=off "$2"
 eval "$(fasd --init auto)"
 
 alias v='f -e vim' # quick opening files with vim
-alias m='f -e mpv' # quick opening files with mpv
-alias o='a -e xdg-open' # quick opening files with xdg-open
+# alias m='f -e mpv' # quick opening files with mpv
+# alias o='a -e xdg-open' # quick opening files with xdg-open
 
-_fasd_bash_hook_cmd_complete v m j o
+_fasd_bash_hook_cmd_complete v 
+# m j o
 
 #fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # FZF colorscheme
 # export FZF_DEFAULT_OPTS='
