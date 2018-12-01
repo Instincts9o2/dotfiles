@@ -3,6 +3,8 @@
 
 config_version: 2
 settings:
+  backend:
+    global: webengine
   bindings.commands:
     global:
       normal:
@@ -54,9 +56,19 @@ settings:
   fonts.keyhint:
     global: 10pt monospace
   fonts.monospace:
-    global: '"Roboto Mono for Powerline", Terminus, Monospace, "DejaVu Sans Mono",
-      Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier, "Liberation
-      Mono", monospace, Fixed, Consolas, Terminal'
+    global: '"Source Code Pro for Powerline"'
+  fonts.web.family.cursive:
+    global: null
+  fonts.web.family.fantasy:
+    global: null
+  fonts.web.family.fixed:
+    global: null
+  fonts.web.family.sans_serif:
+    global: null
+  fonts.web.family.serif:
+    global: null
+  fonts.web.family.standard:
+    global: null
   fonts.web.size.minimum_logical:
     global: 6
   input.insert_mode.auto_load:

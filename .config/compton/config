@@ -1,26 +1,27 @@
-# opacity-rule = ["80:name *= 'i3bar'","100:name *= 'qutebrowser'","10:name *= 'feh'"];
+backend = "xrender";
+opacity-rule = ["100:name *= 'i3bar'","96:name *= 'qutebrowser'","100:name *= 'feh'"];
 
 
-# inactive-opacity = 0.94;
-# active-opacity = 1.0;
-# inactive-dim = 0.8;
-# use-ewmh-active-win = true;
+inactive-opacity = 0.95;
+active-opacity = 0.98;
+inactive-dim = 0.1;
+use-ewmh-active-win = true;
 
-# shadow = true;
-# shadow-radius = 10;
-# shadow-opacity = 3.5;
-# no-dock-shadow = true;		# Avoid drawing shadows on dock/panel windows.
-# no-dnd-shadow = true;		# Don't draw shadows on DND windows.
-# clear-shadow = true;		# Zero the part of the shadow's mask behind the window (experimental).
+shadow = true;
+shadow-radius = 10;
+shadow-opacity = 3.5;
+no-dock-shadow = true;		# Avoid drawing shadows on dock/panel windows.
+no-dnd-shadow = true;		# Don't draw shadows on DND windows.
+clear-shadow = true;		# Zero the part of the shadow's mask behind the window (experimental).
 
 shadow-offset-x = -7;		# The left offset for shadows. (default -15)
 shadow-offset-y = -7;		# The top offset for shadows. (default -15)
 
 
 # Fading
-fading = false; 	  	# Fade windows during opacity changes.
-# fade-delta = 3; 		# The time between steps in a fade in milliseconds. (default 10).
-# fade-in-step = 0.03; 		# Opacity change between steps while fading in. (default 0.028).
-# fade-out-step = 0.03; 		# Opacity change between steps while fading out. (default 0.03).
+fading = true; 	  	# Fade windows during opacity changes.
+fade-delta = 7; 		# The time between steps in a fade in milliseconds. (default 10).
+fade-in-step = 0.03; 		# Opacity change between steps while fading in. (default 0.028).
+fade-out-step = 0.03; 		# Opacity change between steps while fading out. (default 0.03).
 
 

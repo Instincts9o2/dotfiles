@@ -145,7 +145,8 @@ alias ra='ranger'
 alias bandho='sudo poweroff'
 alias restart='sudo reboot'
 alias sounds='~/Solstice/bash_scripts/alsa/alsa.sh'
-alias cl="clear && printf '\e[3J'"
+alias cl="clear"
+#&& printf '\e[3J'"
 alias pg='ping -f -i 0.5 www.google.com'
 alias tk='tmux kill-session'
 alias xmod='xmodmap ~/.Xmodmap'
@@ -232,18 +233,20 @@ __prompt_command() {
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob 
+# autocd
+shopt -s autocd
 # mutt background fix
 export COLORFGBG="default;default"
 # for vim in bash
 set -o vi
 # Color Manpages
-# export LESS_TERMCAP_mb=$'\E[01;31m'             # begin blinking
-# export LESS_TERMCAP_md=$'\E[01;31m'             # begin bold
-# export LESS_TERMCAP_me=$'\E[0m'                 # end mode
-# export LESS_TERMCAP_se=$'\E[0m'                 # end standout-mode                 
-# export LESS_TERMCAP_so=$'\E[01;44;33m'          # begin standout-mode - info box                              
-# export LESS_TERMCAP_ue=$'\E[0m'                 # end underline
-# export LESS_TERMCAP_us=$'\E[01;32m'             # begin underline
+export LESS_TERMCAP_mb=$'\E[01;31m'             # begin blinking
+export LESS_TERMCAP_md=$'\E[01;31m'             # begin bold
+export LESS_TERMCAP_me=$'\E[0m'                 # end mode
+export LESS_TERMCAP_se=$'\E[0m'                 # end standout-mode                 
+export LESS_TERMCAP_so=$'\E[01;44;33m'          # begin standout-mode - info box                              
+export LESS_TERMCAP_ue=$'\E[0m'                 # end underline
+export LESS_TERMCAP_us=$'\E[01;32m'             # begin underline
 # Wget (Retrieve Files From The Web)
 #-------- Wget (Retrieve Files From The Web) {{{
 #------------------------------------------------------
@@ -274,7 +277,6 @@ _fasd_bash_hook_cmd_complete v
 # m j o
 
 #fzf
-# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # FZF colorscheme
 # export FZF_DEFAULT_OPTS='

@@ -62,14 +62,6 @@ set $mute --no-startup-id amixer sset Master toggle
 set $truemute --no-startup-id amixer sset Master mute
 set $headphonetoggle --no-startup-id amixer -c 1 sset Headphone toggle
 
-# Color variables 
-set $bg-color            #00000000
-set $bf-color            #00000000
-set $bd-color            #00000000
-set $inactive-bg-color   #00000000
-set $inactive-bd-color   #00000000
-set $text-color          #00000000
-set $inactive-text-color #00000000
 
 # set $flash --no-startup-id bash ~/.Scripts/flash.sh
 
@@ -151,7 +143,7 @@ set $inactive-text-color #00000000
     bindsym $mod+r                   [instance="ranger"] scratchpad show; [instance="ranger"] move position center; [instance="ranger"] resize set 740 500
     bindsym $mod+b                   [class="qutebrowser"] scratchpad show; [class="qutebrowser"] move position center; [class="qutebrowser"] resize set 740 500 
     bindsym $mod+g                   [class="Google-chrome"] scratchpad show; [class="Google-chrome"] move position center; [class="Google-chrome"] resize set 740 500 
-    bindsym $mod+o                   [instance="w3m"] scratchpad show; [instance="w3m"] move position center; [instance="w3m"] resize set 940 560
+    bindsym $mod+o                   [instance="w3m"] scratchpad show; [instance="w3m"] move position center; [instance="w3m"] resize set 740 500
     bindsym $mod+m                   [instance="Music"] scratchpad show; [instance="Music"] move position center; [instance="Music"] resize set 640 400
     bindsym $mod+i                   [instance="IRC"] scratchpad show; [instance="IRC"] move position center; [instance="IRC"] resize set 850 500
     bindsym $mod+e                   [instance="shell"] scratchpad show; [instance="shell"] move position center; [instance="shell"] resize set 640 400
@@ -165,8 +157,8 @@ set $inactive-text-color #00000000
     bindsym $mod+Shift+u	resize grow height 5 px or 5 ppt
     bindsym $mod+Shift+o	resize grow width 5 px or 5 ppt
 # Gaps
-    bindsym $mod+Shift+d 	gaps inner current set 12; gaps outer current set 13
-    bindsym $mod+Shift+t        gaps inner current set 1; gaps outer current set 1
+    bindsym $mod+Shift+d 	gaps inner current set 12; gaps outer current set 11
+    bindsym $mod+Shift+t        gaps inner current set 4; gaps outer current set 1
     bindsym $mod+z              gaps outer current plus 2
     bindsym $mod+Shift+z        gaps outer current minus 2
     bindsym $mod+f              fullscreen toggle
@@ -179,8 +171,8 @@ set $inactive-text-color #00000000
     bindsym $mod+Shift+s                exec dmenu_run
     bindsym $mod+Shift+g                exec qutebrowser 
     bindsym $mod+Return                 exec $term 
-    bindsym $mod+Home                   exec thunar
-    # bindsym $mod+Home                   exec nautilus --no-desktop
+    # bindsym $mod+Home                   exec thunar
+    bindsym $mod+Home                   exec nautilus --no-desktop
 
 # Music Bindings
 # For advancing forward/backward in an mpd song
@@ -227,17 +219,17 @@ set $inactive-text-color #00000000
 # bindsym $mod+Shift+Return
 
 # EXEC AND EXEC_ALWAYS
-exec --no-startup-id redshift &
-exec qutebrowser 
+# exec --no-startup-id redshift &
+# exec qutebrowser 
 exec --no-startup-id mpd
-exec --no-startup-id transmission-daemon -g /home/instincts/.config/transmission-daemon
+# exec --no-startup-id transmission-daemon -g /home/instincts/.config/transmission-daemon
 exec --no-startup-id nm-applet
 
 # Unclutter makes the mouse invisible after a brief period
 exec --no-startup-id unclutter
 
 exec --no-startup-id compton --config ~/.config/compton/config -b 
-exec feh --bg-fill /home/instincts/Downloads/Pranav/onecolor.png
+exec feh --bg-fill /home/instincts/Downloads/Pranav/Wallpapers/Pictures/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg
 # exec_always --no-startup-id "bash xrdb ~/.Xresources"
 # exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 exec_always --no-startup-id sleep 2 && xmodmap ~/.Xmodmap
@@ -253,13 +245,16 @@ popup_during_fullscreen smart
 exec --no-startup-id sudo mount -a
 
 # SETTINGS
-bar {
-    status_command i3blocks -c ~/i3blocks.conf
-        position bottom
-        font xft:Source Code Pro Medium 9 
-        mode dock
-        modifier None
-} 
+# bar {
+    # status_command i3blocks -c ~/i3blocks.conf
+        # polybar /home/instincts/.config/polybar/launch.sh
+        # position bottom
+        # font xft:Source Code Pro Medium 9 
+        # mode dock
+        # modifier None
+# } 
+
+bindsym $ctrl+tab bar hidden_state toggle
 
 
 
@@ -267,27 +262,37 @@ bar {
 floating_modifier $mod
 
 #For no window bar
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
+
 hide_edge_borders both
 
 #inner and outer gaps
-gaps inner 1
-gaps outer 1 
+gaps inner 12
+gaps outer 11 
 
+# Color variables 
+set $bg-color            #00000000
+set $bf-color            #00000000
+set $bd-color            #00000000
+set $inactive-bg-color   #00000000
+set $inactive-bd-color   #00000000
+set $text-color          #00000000
+set $inactive-text-color #1f2022FF
+set $new                 #e7d4fc
 
-# #                         border              background      text              indicator  child border 
-client.focused              #778899FF           #778899FF       #fdf6e3FF            #778899FF  #778899FF 
-# client.unfocused          #00000000           #00000000       #00000000           #00000000   #00000000  
-client.unfocused          $inactive-bd-color  $bg-color       $text-color          $bg-color  $inactive-bd-color
-client.focused_inactive   $bg-color           $bg-color       $inactive-text-color $bg-color  $bg-color
-client.urgent             $bf-color           $bg-color       $text-color          $bg-color  $bf-color
-client.background                               $bg-color
+# #                         border              background      text                indicator  child border 
+client.focused              $new                #778899FF      #778899FF           #778899FF    $new
+client.unfocused            #1f2022FF           #1f2022FF       #1f2022FF           #1f2022FF   #1f2022FF 
+# client.unfocused          $inactive-bd-color  $bg-color       $text-color          $bg-color  $inactive-bd-color
+client.focused_inactive   #1f2022FF           $bg-color       $inactive-text-color $bg-color  #1f2022FF
+client.urgent             $778899FF             $bg-color       $text-color          $bg-color  $bf-color
+# client.background                               $bg-color
 
 # Spawning programs on different workspaces
 for_window [class="qutebrowser"] move to workspace $ws1
 for_window [class="libreoffice"] move to workspace $ws5
 for_window [class="Google-chrome"] move to workspace $ws4
-for_window [class="Thunar"] move to workspace $ws5
+for_window [class="Nautilus"] move to workspace $ws5
 
 # Moving windows to scratchpads
 
@@ -304,10 +309,10 @@ exec --no-startup-id $term -n ranger
 for_window [instance="tmux"] floating enable
 for_window [instance="tmux"] resize set 640 400
 for_window [instance="tmux"] move scratchpad
-exec --no-startup-id $term -n tmux -e tmux
+exec --no-startup-id $term -n tmux
 
 for_window [instance="w3m"] floating enable
-for_window [instance="w3m"] resize set 940 560
+for_window [instance="w3m"] resize set 740 500
 for_window [instance="w3m"] move scratchpad
 exec --no-startup-id $term -n w3m
 
@@ -332,7 +337,7 @@ exec --no-startup-id $term -n IRC
 
 # Remaps the caps lock button to escape and uses the US international keyboard with dead keys
 exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl -option caps:escape
-
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id sleep 10 && keynav &
 
 

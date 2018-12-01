@@ -23,7 +23,7 @@ c.scrolling.smooth = True
 c.content.user_stylesheets = "/home/instincts/darculized-everything-css/css/darculized/darculized-all-sites.css"
 
 # Fonts
-c.fonts.monospace = "monospace"
+c.fonts.monospace = '"Source Code Pro for Powerline"'
 c.fonts.completion.entry = "10pt Roboto Mono for Powerline"
 c.fonts.completion.category = "bold 10pt Roboto Mono for Powerline"
 c.fonts.debug_console = "10pt Roboto Mono for Powerline"
@@ -36,6 +36,3 @@ c.fonts.messages.warning = "10pt Roboto Mono for Powerline"
 c.fonts.prompts = "10pt Roboto Mono for Powerline"
 c.fonts.statusbar = "10pt Roboto Mono for Powerline"
 c.fonts.tabs = "10pt Roboto Mono for Powerline"
-c.fonts.web.family.fixed = "monospace"
-c.fonts.web.family.sans_serif = "monospace"
-c.fonts.web.family.serif = "monospace"
