@@ -181,18 +181,18 @@ youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 "$1"
 
 
 hiber(){
-    if [[ "$(nmcli connection show --active | awk 'NR == 2' | awk '{print $1}')" == "INSTINCTS" ]]; then
-    nmcli c down uuid 85f4a51b-7f29-4f32-a438-a0e32380b98b 
+active="$(nmcli connection show --active | awk 'NR == 2' | awk '{print $1}')"
+if [[ -n "$active" ]]; then
+    nmcli radio wifi off
     sudo systemctl hibernate
 else 
     sudo systemctl hibernate
 fi
 }
-# alias hibernate='nmcli c down uuid 85f4a51b-7f29-4f32-a438-a0e32380b98b && sudo systemctl hibernate'
 
-
-
-# alias mp3down='youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 $1'
+mp3down(){
+    youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 "$1"
+}
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -209,32 +209,34 @@ export LANGUAGE=en_IN.UTF-8
 PROMPT_COMMAND=__prompt_command # Func to gen PS1 after CMDs
 
 __prompt_command() {
-    local EXIT="$?"             # This needs to be first
+    # local EXIT="$?"             # This needs to be first
     # PS1
     PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\[$(tput setaf 2)\]\[$(tput setaf 4)\]\[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\] [\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\n  \e[38;5;82m>>>:\$ \[$(tput sgr0)\]"
 
 
-    local RCol='\[\e[0m\]'
-
-    local Red='\[\e[0;31m\]'
-    local Gre='\[\e[0;32m\]'
-    local BYel='\[\e[1;33m\]'
-    local BBlu='\[\e[1;34m\]'
-    local Pur='\[\e[0;35m\]'
-
-    if [ $EXIT != 0 ]; then
-        PS1+="${Red}${RCol}"      # Add red if exit code non 0
-    else
-        PS1+="${Gre}${RCol}"
-    fi
-
-    PS1+="${RCol}${BBlu}${Pur}${BYel}${RCol}"
+    # local RCol='\[\e[0m\]'
+    #
+    # local Red='\[\e[0;31m\]'
+    # local Gre='\[\e[0;32m\]'
+    # local BYel='\[\e[1;33m\]'
+    # local BBlu='\[\e[1;34m\]'
+    # local Pur='\[\e[0;35m\]'
+    #
+    # if [ $EXIT != 0 ]; then
+    #     PS1+="${Red}${RCol}"      # Add red if exit code non 0
+    # else
+    #     PS1+="${Gre}${RCol}"
+    # fi
+    #
+    # PS1+="${RCol}${BBlu}${Pur}${BYel}${RCol}"
 }
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob 
+shopt -s cdspell
+complete -d cd 
 # autocd
-shopt -s autocd
+shopt -s autocd 
 # mutt background fix
 export COLORFGBG="default;default"
 # for vim in bash
@@ -244,7 +246,7 @@ export LESS_TERMCAP_mb=$'\E[01;31m'             # begin blinking
 export LESS_TERMCAP_md=$'\E[01;31m'             # begin bold
 export LESS_TERMCAP_me=$'\E[0m'                 # end mode
 export LESS_TERMCAP_se=$'\E[0m'                 # end standout-mode                 
-export LESS_TERMCAP_so=$'\E[01;44;33m'          # begin standout-mode - info box                              
+export LESS_TERMCAP_so=$'\E[01;10;80m'          # begin standout-mode - info box                              
 export LESS_TERMCAP_ue=$'\E[0m'                 # end underline
 export LESS_TERMCAP_us=$'\E[01;32m'             # begin underline
 # Wget (Retrieve Files From The Web)
@@ -270,11 +272,10 @@ cd "$outputdir_name" && wget -r -l1 -H -t1 -nd -N -np -A "$1" -erobots=off "$2"
 eval "$(fasd --init auto)"
 
 alias v='f -e vim' # quick opening files with vim
-# alias m='f -e mpv' # quick opening files with mpv
-# alias o='a -e xdg-open' # quick opening files with xdg-open
+alias m='f -e mpv' # quick opening files with mpv
+alias o='a -e xdg-open' # quick opening files with xdg-open
 
-_fasd_bash_hook_cmd_complete v 
-# m j o
+_fasd_bash_hook_cmd_complete v m j o
 
 #fzf
 
@@ -292,3 +293,6 @@ sudo killall transmission-daemon
 transmission-daemon -g /home/instincts/.config/transmission-daemon
 }
 
+stf(){ st -f "$1"; }
+
+cd() { builtin cd "$@" && ls; }

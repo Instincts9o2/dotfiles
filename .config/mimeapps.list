@@ -5,11 +5,9 @@ x-scheme-handler/https=google-chrome.desktop
 x-scheme-handler/about=google-chrome.desktop
 x-scheme-handler/unknown=google-chrome.desktop
 image/png=feh.desktop
-image/jpeg=feh.desktop
 
 [Added Associations]
 video/quicktime=mpv.desktop;
-image/jpeg=eog.desktop;feh.desktop;shotwell-viewer.desktop;
 application/x-font-ttf=org.gnome.font-viewer.desktop;
 image/png=feh.desktop;eog.desktop;shotwell-viewer.desktop;
 video/x-msvideo=org.gnome.Totem.desktop;

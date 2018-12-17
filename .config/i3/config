@@ -36,7 +36,7 @@ set $ws3 "3:  "
 set $ws4 "4:  "
 set $ws5 "5:  "
 set $ws6 "6:  "
-set $ws7 "7"
+set $ws7 "7:  "
 set $ws8 "8:  "
 set $ws9 "9:  "
 set $ws10 "10:  "
@@ -141,9 +141,9 @@ set $headphonetoggle --no-startup-id amixer -c 1 sset Headphone toggle
 
     bindsym $mod+c                   [instance="Calcurse"] scratchpad show; [instance="Calcurse"] move position center; [instance="Calcurse"] resize set 640 400
     bindsym $mod+r                   [instance="ranger"] scratchpad show; [instance="ranger"] move position center; [instance="ranger"] resize set 740 500
-    bindsym $mod+b                   [class="qutebrowser"] scratchpad show; [class="qutebrowser"] move position center; [class="qutebrowser"] resize set 740 500 
-    bindsym $mod+g                   [class="Google-chrome"] scratchpad show; [class="Google-chrome"] move position center; [class="Google-chrome"] resize set 740 500 
-    bindsym $mod+o                   [instance="w3m"] scratchpad show; [instance="w3m"] move position center; [instance="w3m"] resize set 740 500
+    bindsym $mod+b                   [class="qutebrowser"] scratchpad show; [class="qutebrowser"] resize set 700 710
+    bindsym $mod+g                   [class="Google-chrome"] scratchpad show; 
+    bindsym $mod+o                   [instance="w3m"] scratchpad show; 
     bindsym $mod+m                   [instance="Music"] scratchpad show; [instance="Music"] move position center; [instance="Music"] resize set 640 400
     bindsym $mod+i                   [instance="IRC"] scratchpad show; [instance="IRC"] move position center; [instance="IRC"] resize set 850 500
     bindsym $mod+e                   [instance="shell"] scratchpad show; [instance="shell"] move position center; [instance="shell"] resize set 640 400
@@ -157,7 +157,7 @@ set $headphonetoggle --no-startup-id amixer -c 1 sset Headphone toggle
     bindsym $mod+Shift+u	resize grow height 5 px or 5 ppt
     bindsym $mod+Shift+o	resize grow width 5 px or 5 ppt
 # Gaps
-    bindsym $mod+Shift+d 	gaps inner current set 12; gaps outer current set 11
+    bindsym $mod+Shift+d 	gaps inner current set 10; gaps outer current set 9
     bindsym $mod+Shift+t        gaps inner current set 4; gaps outer current set 1
     bindsym $mod+z              gaps outer current plus 2
     bindsym $mod+Shift+z        gaps outer current minus 2
@@ -220,7 +220,6 @@ set $headphonetoggle --no-startup-id amixer -c 1 sset Headphone toggle
 
 # EXEC AND EXEC_ALWAYS
 # exec --no-startup-id redshift &
-# exec qutebrowser 
 exec --no-startup-id mpd
 # exec --no-startup-id transmission-daemon -g /home/instincts/.config/transmission-daemon
 exec --no-startup-id nm-applet
@@ -267,9 +266,9 @@ for_window [class="^.*"] border pixel 2
 hide_edge_borders both
 
 #inner and outer gaps
-gaps inner 12
-gaps outer 11 
-
+gaps inner 6
+gaps outer 5
+ 
 # Color variables 
 set $bg-color            #00000000
 set $bf-color            #00000000
@@ -312,7 +311,7 @@ for_window [instance="tmux"] move scratchpad
 exec --no-startup-id $term -n tmux
 
 for_window [instance="w3m"] floating enable
-for_window [instance="w3m"] resize set 740 500
+# for_window [instance="w3m"] resize set 740 500
 for_window [instance="w3m"] move scratchpad
 exec --no-startup-id $term -n w3m
 

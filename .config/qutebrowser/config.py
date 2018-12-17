@@ -36,3 +36,8 @@ c.fonts.messages.warning = "10pt Roboto Mono for Powerline"
 c.fonts.prompts = "10pt Roboto Mono for Powerline"
 c.fonts.statusbar = "10pt Roboto Mono for Powerline"
 c.fonts.tabs = "10pt Roboto Mono for Powerline"
+
+
+
+
+
